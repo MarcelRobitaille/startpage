@@ -5,9 +5,9 @@ const process      = require('process')
 const fs           = require('pn/fs')
 
 const express      = require('express')
-const bodyParser   = require('body-parser')
-const session      = require('express-session')
-const cookie       = require('cookie-parser')
+// const bodyParser   = require('body-parser')
+// const session      = require('express-session')
+// const cookie       = require('cookie-parser')
 const compression  = require('compression')
 const app          = express()
 
@@ -37,8 +37,8 @@ app.use((req, res, next) => {
 })
 
 // Form data stuff
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({extended: true}))
 
 // Set path for assets
 app.use(express.static(__dirname + '/public'))
