@@ -8,44 +8,9 @@ const co   = require('co')
 const styles  = {
   'global.scss': {
     files: [
-      './node_modules/normalize-css/normalize.css',
-      './node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss',
+      './node_modules/normalize.css/normalize.css',
       'source/css/global.scss',
       'source/css/_components.scss',
-      'source/css/_settings.scss',
-      'source/css/_vars.scss',
-      'source/css/_base.scss',
-    ],
-    dir: 'css/'
-  },
-
-  'unitselect.scss': {
-    files: [
-      './node_modules/normalize-css/normalize.css',
-      './node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss',
-      'source/css/unitselect.scss',
-      'source/css/_vars.scss',
-      'source/css/_base.scss',
-    ],
-    dir: 'css/'
-  },
-
-  'checkemail.scss': {
-    files: [
-      './node_modules/normalize-css/normalize.css',
-      './node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss',
-      'source/css/checkemail.scss',
-      'source/css/_vars.scss',
-      'source/css/_base.scss',
-    ],
-    dir: 'css/'
-  },
-
-  'auth.scss': {
-    files: [
-      './node_modules/normalize-css/normalize.css',
-      './node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss',
-      'source/css/auth.scss',
       'source/css/_vars.scss',
       'source/css/_base.scss',
     ],
