@@ -12,8 +12,6 @@ gulp.task('default', ['css', 'js', 'svg', 'watch', 'browser-sync'])
 
 const buildTasks = Object.keys(gulp.tasks).filter( task => /build-.*/gi.test(task) )
 
-buildTasks.push('images')
-
 gulp.task('build', buildTasks)
 
 gulp.task('watch', Object.keys(gulp.tasks).filter(task => {
