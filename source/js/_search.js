@@ -6,8 +6,9 @@ const co = require('co')
 
 const $search = _.byId('search__input')
 const $select = _.byId('search__select')
-const $results = _.byId('search__results')
 const $options = _.byClassName('search__option')
+
+$select.firstChild.setAttribute('selected', 'selected')
 
 const toggle = ($el, direction) => {
   switch(direction){
@@ -31,52 +32,26 @@ const toggle = ($el, direction) => {
 
 $search.addEventListener('keydown', (event) => {
   if(['ArrowUp', 'ArrowDown'].indexOf(event.key) !== -1 && event.ctrlKey){
-    const $selected = $select.querySelector('[selected="selected"]')
-    $selected.removeAttribute('selected')
-    if(toggle($selected, event.key)) return
 
-    // switch(event.key){
-    //   case 'ArrowUp': {
-    //     $select.lastChild.setAttribute('selected', 'selected')
-    //     break
-    //   }
-    //   case 'ArrowDown': {
-    //     $select.firstChild.setAttribute('selected', 'selected')
-    //     break
-    //   }
-    // }
+    const $selected = $select.querySelector('[selected="selected"]')
+    if(toggle($selected, event.key)){
+      $selected.removeAttribute('selected')
+    }
   }
 })
 
-let timer
-$search.addEventListener('keyup', (event) => {
-  clearTimeout(timer)
+_.byId('search__form').addEventListener('submit', (event) => {
+  event.preventDefault()
+  event.stopPropagation()
 
-  timer = setTimeout(() => {
-    co(function *(){
-      const engine = document.querySelector('.search__option[selected="selected"]').value
-      let results  = []
+  const engine = document.querySelector('.search__option[selected="selected"]').value
 
-      switch(engine){
-        case 'duckduckgo': {
-          const response = yield axios('http://api.duckduckgo.com/?format=json&q=' + $search.value.replace(/ /g, '+'))
+  const url = {
+    duckduckgo: 'https://duckduckgo.com/?q=',
+    npm:        'https://www.npmjs.com/search?q=',
+    github:     'https://github.com/search?utf8=✓&q=',
+    amazon:     'https://www.amazon.ca/s/field-keywords='
+  }[engine]
 
-          response.data.Results.push(...response.data.RelatedTopics).forEarch((result) => results.push(result.Text))
-          break
-        }
-        case 'github': {
-          const response = yield axios('https://api.github.com/search/repositories?q=' + $search.value.replace(/ /g, '+'))
-          results = response.data.items.map((result) => `<a href=`)
-
-          console.log(results)
-          break
-        }
-        default: {
-          return
-        }
-      }
-
-      $results.innerHTML = results.map((result) => `<li class="search__results__li">${result.Result}</li>`).join('\n')
-    })
-  }, 300)
+  if(url) location.href = url + $search.value
 })
