@@ -1,0 +1,117 @@
+@mixin outline-transition(){
+  outline: 1px solid transparent;
+  transition: outline-color .3s ease-in-out;
+}
+
+.content{
+  padding: 30px;
+}
+
+.search{
+  padding: 30px;
+  @include outline-transition;
+}
+  .search__title{
+
+  }
+  .search__row{
+    display: flex;
+  }
+    .search__box{
+      flex: 1;
+      margin-right: 20px;
+      position: relative;
+      outline: 1px solid $yellow;
+    }
+      .search__input{
+        width: calc(100% - 30px);
+        border: none;
+        outline: none;
+        padding: 15px;
+        color: $cream;
+        border-radius: 3px;
+        background: lighten($grey, 5%);
+        transition: background .3s ease-in-out;
+        &:focus{
+          background: lighten($grey, 7%);
+        }
+      }
+      .search__results{
+        left: -1px;
+        right: -1px;
+        margin: 0;
+        padding: 10px 0;
+        position: absolute;
+        border: 1px solid $yellow;
+        background: lighten($grey, 7%);
+        z-index: 1;
+        &:empty{
+          display: none;
+        }
+      }
+        .search__results__li{
+          padding: 0 15px;
+          line-height: 30px;
+          list-style: none;
+          &,
+          & a{
+            color: rgba($cream, .7);
+          }
+          a{
+            margin-right: 10px;
+          }
+        }
+
+    .search__select{
+      padding: 0 20px;
+      color: $cream;
+      border-radius: 3px;
+      background: darken($purple, 15%);
+      border: 2px solid $purple;
+    }
+
+.links{
+  padding: 30px 20px;
+  @include outline-transition;
+}
+  .links__title{
+    padding: 0 10px;
+  }
+  .links__row{
+    display: flex;
+    padding: 10px 0;
+  }
+    .links__section{
+      margin: 0 10px;
+      flex: 1;
+      outline-offset: 10px;
+      @include outline-transition;
+    }
+      .links__section__title{
+        margin: 0;
+        margin-bottom: 20px;
+        position: relative;
+        line-height: 30px;
+        &:after{
+          content: ' ';
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 2px;
+          position: absolute;
+          background: $brown;
+        }
+      }
+      .links__ul{
+        padding: 0;
+        margin: 0;
+      }
+        .links__li{
+          list-style: none;
+        }
+          .links__a{
+            text-decoration: none;
+            color: $orange;
+            display: block;
+            line-height: 35px;
+          }
