@@ -92,6 +92,11 @@
         margin-bottom: 20px;
         position: relative;
         line-height: 30px;
+        &,
+        & a{
+          color: $brown;
+          text-decoration: none;
+        }
         &:after{
           content: ' ';
           left: 0;

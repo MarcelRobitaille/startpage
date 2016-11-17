@@ -2,8 +2,12 @@ mixin link(href, key, text)
   li.links__li
     a.links__a.shortcut(href=href, data-key=key, data-level="2", data-action="link")= text
 
-mixin title(text, key)
-  h3.links__section__title.title.shortcut(data-key=key, data-level="1", data-for=".links__section")= text
+mixin title(text, key, url)
+  h3.links__section__title.title.shortcut(data-key=key, data-level="1", data-for=".links__section")
+    if url
+      a(href=url)= text
+    else
+      = text
 
 .links.section.shortcut__parent.shortcut__block#links(data-level="0")
   h2.links__title.title.shortcut.shortcut__block__key(data-key="L", data-for="#links") Links:
@@ -11,7 +15,7 @@ mixin title(text, key)
   .links__row
   
     .links__section(data-level="1")
-      +title('Google', 'G')
+      +title('Google', 'G', 'https://google.ca')
       ul.links__ul
         +link('https://google.ca',        '_', 'Google')
         +link('https://gmail.com',        'G', 'Gmail')
@@ -20,9 +24,9 @@ mixin title(text, key)
         +link('https://drive.google.com', 'r', 'Drive')
       
     .links__section(data-level="1")
-      +title('University', 'U')
+      +title('University', 'U', 'http://www.umoncton.ca')
       ul.links__ul
-        +link('https://umoncton.ca', 'U', 'Umoncton')
+        +link('https://www.umoncton.ca', 'U', 'Umoncton')
         +link('https://clic.umoncton.ca/portailclic_html_v2/index.html', 'C', 'Clic')
         +link('https://socrate.umoncton.ca/socrat', 'M', 'ManiWeb')
         +link('https://fichiers4.umoncton.ca/htcomnet/', 'F', 'Files')
@@ -35,7 +39,7 @@ mixin title(text, key)
         +link('https://npmjs.com/', 'n', 'npm')
     
     .links__section(data-level="1")
-      +title('Reddit', 'R')
+      +title('Reddit', 'R', 'https://reddit.com')
       ul.links__ul
         +link('https://reddit.com/r/programmerhumor', 'H', 'ProgrammerHumour')
         +link('https://reddit.com/r/3dprinting', '3', '3D Printing')

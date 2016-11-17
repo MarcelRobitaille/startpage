@@ -10,7 +10,7 @@ for(let i = 0; i < $shortcuts.length; i++){
   const text      = $shortcut.innerText
   const index     = text.toLowerCase().indexOf(key.toLowerCase())
 
-  if(~index) $shortcut.innerHTML = `${text.substr(0, index)}<span class="underline">${key}</span>${text.substr(index + 1)}`
+  if(~index) ($shortcut.firstElementChild ? $shortcut.firstChild : $shortcut).innerHTML = `${text.substr(0, index)}<span class="underline">${key}</span>${text.substr(index + 1)}`
 }
 
 let $focus
