@@ -6,11 +6,17 @@ const jpegoptim = require('imagemin-jpegoptim')
 
 module.exports = gulp => {
   gulp.task('images', () => {
+    gulp.watch('./source/images/**', ['images'])
     return gulp.src('./source/img/**')
       .pipe(newer('./public/img/'))
       .pipe(imagemin([ jpegoptim({ progressive: true, max: 75 }), imagemin.svgo() ], { progressive: true }))
       .pipe(gulp.dest('./public/img/'))
   })
 
-  gulp.watch('./source/images/**', ['images'])
+  gulp.task('build-images', () => {
+    return gulp.src('./source/img/**')
+      .pipe(newer('./public/img/'))
+      .pipe(imagemin([ jpegoptim({ progressive: true, max: 75 }), imagemin.svgo() ], { progressive: true }))
+      .pipe(gulp.dest('./public/img/'))
+  })
 }

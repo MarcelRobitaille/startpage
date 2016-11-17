@@ -1,27 +1,39 @@
 {
   "name": "startpage",
   "version": "1.0.0",
-  "description": "",
+  "description": "My start page",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Marcel-Robitaille/startpage.git"
+  },
   "dependencies": {
     "co": "4.6.0",
+    "compression": "1.6.2",
+    "express": "4.14.0",
+    "morgan": "1.7.0",
     "pn": "1.0.0",
     "pug": "2.0.0-beta6"
   },
   "devDependencies": {
+    "axios": "0.15.2",
     "babel-core": "6.18.2",
     "babel-loader": "6.2.7",
     "babel-plugin-transform-regenerator": "6.16.1",
     "babel-polyfill": "6.16.0",
     "babel-preset-es2015": "6.18.0",
     "babel-preset-stage-0": "6.16.0",
+    "browser-sync": "2.17.6",
     "dbust": "1.0.4",
+    "flightplan": "0.6.14",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.1",
     "gulp-clean": "0.3.2",
     "gulp-cssnano": "2.1.2",
     "gulp-if": "2.0.2",
+    "gulp-imagemin": "3.1.1",
     "gulp-load-plugins": "1.4.0",
+    "gulp-newer": "1.3.0",
     "gulp-plumber": "1.1.0",
     "gulp-pug": "3.1.0",
     "gulp-rename": "1.2.2",
@@ -32,6 +44,7 @@
     "gulp-svgmin": "1.2.3",
     "gulp-util": "3.0.7",
     "imagemin-jpegoptim": "^5.0.0",
+    "normalize.css": "5.0.0",
     "webpack": "1.13.3"
   },
   "scripts": {

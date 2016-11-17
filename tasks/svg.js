@@ -4,6 +4,7 @@ const $ = require('gulp-load-plugins')()
 
 module.exports = gulp => {
   gulp.task('svg', () => {
+    gulp.watch('./source/svg/*.svg', ['svg'])
     return gulp.src('source/svg/*.svg')
       .pipe(gulp.dest('public/svg/'))
       .pipe($.svgSprite({
@@ -37,6 +38,4 @@ module.exports = gulp => {
       .pipe(gulp.dest('public'))
 
   })
-
-  gulp.watch('./source/svg/*.svg', ['svg'])
 }
