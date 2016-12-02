@@ -16,7 +16,7 @@ const topLevelDomains = 'ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|b
 
 // I know there's more but I don't really give a fuck
 const invalidURLChars = ' '
-const urlRegex = new RegExp(`^[^${invalidURLChars}]+\\.(${topLevelDomains})[^${invalidURLChars}]*$`, 'i')
+const urlRegex = new RegExp(`^([^${invalidURLChars}]+\\.(${topLevelDomains})|(\\d{1,3}\\.){3}\\d{1,3})[^ ]*$`, 'i')
 const completionList = JSON.parse(localStorage.getItem('completionList')) || []
 
 
