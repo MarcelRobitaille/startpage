@@ -4,9 +4,10 @@ const _ = require('../../functions/_.js')
 const axios = require('axios')
 const co = require('co')
 
-const $search = _.byId('search__input')
-const $select = _.byId('search__select')
-const $options = _.byClassName('search__option')
+const $search     = _.byId('search__input')
+const $select     = _.byId('search__select')
+const $completion = _.byId('search__completion')
+const $options    = _.byClassName('search__option')
 
 $select.firstChild.setAttribute('selected', 'selected')
 
@@ -15,8 +16,15 @@ const topLevelDomains = 'ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|b
 
 // I know there's more but I don't really give a fuck
 const invalidURLChars = ' '
-
 const urlRegex = new RegExp(`^[^${invalidURLChars}]+\\.(${topLevelDomains})[^${invalidURLChars}]*$`, 'i')
+const completionList = JSON.parse(localStorage.getItem('completionList')) || []
+
+
+/*
+
+  Switch between search engines
+
+*/
 
 const toggle = ($el, direction) => {
   switch(direction){
@@ -38,13 +46,77 @@ const toggle = ($el, direction) => {
   return false
 }
 
-$search.addEventListener('keydown', (event) => {
-  if(['ArrowUp', 'ArrowDown'].indexOf(event.key) !== -1 && event.ctrlKey){
+const handleSearchEngines = (event) => {
+  const $selected = $select.querySelector('[selected="selected"]')
+  if(toggle($selected, event.key)){
+    $selected.removeAttribute('selected')
+  }
+}
 
-    const $selected = $select.querySelector('[selected="selected"]')
-    if(toggle($selected, event.key)){
-      $selected.removeAttribute('selected')
+
+/*
+
+
+
+*/
+
+$search.addEventListener('keyup', (event) => {
+  const direction = {
+    ArrowDown: 'nextElementSibling',
+    ArrowUp: 'previousElementSibling',
+  }[event.key]
+
+  if(direction && event.ctrlKey) handleSearchEngines(event)
+
+  if($search.value.length < 3) return
+
+  const matches = completionList.filter((url) => _.fuzzy(url, $search.value))
+
+  for(let i = 0; i < $completion.children.length; i++){
+    const $el = $completion.children[i]
+    const url = $el.innerText
+    const index = matches.indexOf(url)
+    if(~index){
+      matches.splice(index, 1)
+    }else{
+      $completion.removeChild($el)
     }
+  }
+  for(let i = 0; i < matches.length; i++){
+    const $match = document.createElement('LI')
+    $match.classList.add('search__completion__li')
+    $match.innerText = matches[i]
+    $completion.appendChild($match)
+  }
+  // $completion.innerHTML = matches.map((match) => `<li class="search__completion__li">${match}</li>`)
+
+
+  //
+  // Handles switching search engines and completion list
+  //
+
+  // If not up/down arrow, return
+  if(!direction) return
+
+  let $focus
+  for(let i = 0; i < $completion.children.length; i++){
+    if($completion.children[i].classList.contains('focus')){
+      $focus = $completion.children[i]
+      break
+    }
+  }
+
+  console.log($focus)
+
+  if($focus){
+
+
+    if($focus[direction]){
+      $focus.classList.remove('focus')
+      $focus[direction].classList.add('focus')
+    }
+  }else{
+    $completion.firstElementChild && $completion.firstElementChild.classList.add('focus')
   }
 })
 
@@ -52,9 +124,19 @@ _.byId('search__form').addEventListener('submit', (event) => {
   event.preventDefault()
   event.stopPropagation()
 
-  if(urlRegex.test($search.value)){
+  for(let i = 0; i < $completion.children.length; i++){
+    if($completion.children[i].classList.contains('focus')){
+      return location.href = $completion.children[i].innerText
+    }
+  }
+
+  if($search.value.substr(0, 9) === 'localhost' || urlRegex.test($search.value)){
     let url = $search.value
     if(!/^http(s|):\/\//.test(url)) url = `http://${url}`
+
+    completionList.push(url)
+    localStorage.setItem('completionList', JSON.stringify(completionList))
+
     location.href = url
     return
   }
@@ -65,7 +147,8 @@ _.byId('search__form').addEventListener('submit', (event) => {
     duckduckgo: 'https://duckduckgo.com/?q=',
     npm:        'https://www.npmjs.com/search?q=',
     github:     'https://github.com/search?utf8=✓&q=',
-    amazon:     'https://www.amazon.ca/s/field-keywords='
+    amazon:     'https://www.amazon.ca/s/field-keywords=',
+    youtube:    'https://www.youtube.com/results?search_query=',
   }[engine]
 
   if(url) location.href = url + $search.value

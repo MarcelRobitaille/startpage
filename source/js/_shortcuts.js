@@ -28,6 +28,7 @@ const removeFocus = () => {
   const $old = document.querySelector('.focus')
   if($old) $old.classList.remove('focus')
   $search__input.blur()
+  _.byId('search__completion').innerHTML = ''
 }
 
 const $search        = _.byId('search__shortcut')
@@ -48,9 +49,14 @@ document.addEventListener('keydown', (event) => {
     return
   }
 
-
   if($focus){
     const level = parseInt($focus.getAttribute('data-level'))
+
+    if(event.key === 'Enter' && level === 1){
+      const $link = $focus.querySelector('.links__section__title a')
+      if($link) return location.href = $link.getAttribute('href')
+    }
+
     $elements   = [...$focus.getElementsByClassName('shortcut')].filter(($el) => parseInt($el.getAttribute('data-level')) === level + 1)
   }
 

@@ -2,10 +2,13 @@ form.search.section.shortcut__block#search__form
   h2.search__title.title.shortcut.shortcut__block__key#search__shortcut(data-key="S") Search:
   
   .search__row
-    input.search__input#search__input(type="text", autocomplete="off")
+    .search__box
+      input.search__input#search__input(type="text", autocomplete="off")
+      ul.search__completion#search__completion
     
     select.search__select#search__select
       option.search__option(value="duckduckgo") DuckDuckGo
+      option.search__option(value="youtube") YouTube
       option.search__option(value="npm") npm
       option.search__option(value="github") GitHub
       option.search__option(value="amazon") Amazon
