@@ -1,7 +1,7 @@
 'use strict'
 
 const plan = require('flightplan')
-const username = 'deploy'
+const username = 'marcel'
 const startFile = 'bin/www'
 
 plan.target('prod', {
