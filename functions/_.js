@@ -22,4 +22,12 @@ module.exports = {
 
     return $el
   },
+  fuzzy: (haystack, needle) => {
+    haystack = haystack.toLowerCase()
+    needle   = needle.toLowerCase();
+    let n    = -1
+    let l
+    for (let i = 0; l = needle[i++] ;) if (!~(n = haystack.indexOf(l, n + 1))) return false
+    return true
+  }
 }
