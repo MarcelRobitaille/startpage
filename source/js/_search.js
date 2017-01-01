@@ -17,6 +17,7 @@ const topLevelDomains = 'ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|b
 // I know there's more but I don't really give a fuck
 const invalidURLChars = ' '
 const urlRegex = new RegExp(`^([^${invalidURLChars}]+\\.(${topLevelDomains})|(\\d{1,3}\\.){3}\\d{1,3})[^ ]*$`, 'i')
+const localhostRegex = /^(https?:\/\/|)localhost/i
 const completionList = JSON.parse(localStorage.getItem('completionList')) || []
 
 
@@ -116,7 +117,7 @@ $search.addEventListener('keyup', (event) => {
       $focus[direction].classList.add('focus')
     }
   }else{
-    $completion.firstElementChild && $completion.firstElementChild.classList.add('focus')
+    if($completion.firstElementChild) $completion.firstElementChild.classList.add('focus')
   }
 })
 
@@ -126,11 +127,12 @@ _.byId('search__form').addEventListener('submit', (event) => {
 
   for(let i = 0; i < $completion.children.length; i++){
     if($completion.children[i].classList.contains('focus')){
-      return location.href = $completion.children[i].innerText
+      location.href = $completion.children[i].innerText
+      return
     }
   }
 
-  if($search.value.substr(0, 9) === 'localhost' || urlRegex.test($search.value)){
+  if(localhostRegex.test($search.value) || urlRegex.test($search.value)){
     let url = $search.value
     if(!/^http(s|):\/\//.test(url)) url = `http://${url}`
 

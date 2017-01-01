@@ -64,6 +64,7 @@
       border-radius: 3px;
       background: darken($purple, 15%);
       border: 2px solid $purple;
+      -moz-appearance: none;
     }
       .search__option{
         line-height: 20px;
