@@ -69,7 +69,10 @@ $search.addEventListener('keyup', (event) => {
 
   if(direction && event.ctrlKey) handleSearchEngines(event)
 
-  if($search.value.length < 3) return
+  if($search.value.length < 3){
+    $completion.innerHTML = ''
+    return
+  }
 
   const matches = completionList.filter((url) => _.fuzzy(url, $search.value))
 
@@ -89,6 +92,7 @@ $search.addEventListener('keyup', (event) => {
     $match.innerText = matches[i]
     $completion.appendChild($match)
   }
+  if(!$completion.querySelector('.focus') && $completion.firstElementChild) $completion.firstElementChild.classList.add('focus')
   // $completion.innerHTML = matches.map((match) => `<li class="search__completion__li">${match}</li>`)
 
 
@@ -121,15 +125,16 @@ $search.addEventListener('keyup', (event) => {
   }
 })
 
-_.byId('search__form').addEventListener('submit', (event) => {
+$search.addEventListener('keyup', (event) => {
+  if(event.key !== 'Enter') return
+
   event.preventDefault()
   event.stopPropagation()
 
-  for(let i = 0; i < $completion.children.length; i++){
-    if($completion.children[i].classList.contains('focus')){
-      location.href = $completion.children[i].innerText
-      return
-    }
+  const $focus = $completion.querySelector('.focus')
+  if($focus && !event.ctrlKey){
+    location.href = $focus.textContent
+    return
   }
 
   if(localhostRegex.test($search.value) || urlRegex.test($search.value)){
