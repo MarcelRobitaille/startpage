@@ -18,11 +18,33 @@ mixin title(text, key, url)
       +title('Google', 'G', 'https://google.ca')
       ul.links__ul
         +link('https://google.ca',        '_', 'Google')
+        +link('https://images.google.ca', 'I', 'Images')
         +link('https://gmail.com',        'G', 'Gmail')
         +link('https://youtube.com',      'Y', 'YouTube')
         +link('https://maps.google.com',  'M', 'Maps')
         +link('https://docs.google.com',  'D', 'Docs')
         +link('https://drive.google.com', 'r', 'Drive')
+
+    .links__section(data-level="1")
+      +title('Programming', 'P')
+      ul.links__ul
+        +link('https://github.com/iambecomeroot', 'G', 'GitHub')
+        +link('https://bitbucket.org/',                                'B', 'Bitbucket')
+        +link('https://npmjs.com/',                                    'n', 'npm')
+
+    .links__section(data-level="1")
+      +title('StackExchange', 'E')
+      ul.links__ul
+        +link('http://stackoverflow.com/', 'O', 'Stack Overflow')
+        +link('http://unix.stackexchange.com/', 'L', 'Unix & Linux')
+        +link('http://superuser.com/', 's', 'superuser')
+
+    .links__section(data-level="1")
+      +title('Projects', 'j')
+      ul.links__ul
+        +link('http://localhost:9615', 'A', 'Apollo')
+
+  .links__row
 
     .links__section(data-level="1")
       +title('University', 'U', 'http://www.umoncton.ca')
@@ -35,13 +57,6 @@ mixin title(text, key, url)
         +link('https://trello.com/b/aS9ZD2Uj/homework',                  'T', 'Trello')
 
     .links__section(data-level="1")
-      +title('Programming', 'P')
-      ul.links__ul
-        +link('https://github.com/iambecomeroot', 'G', 'GitHub')
-        +link('https://bitbucket.org/',                                'B', 'Bitbucket')
-        +link('https://npmjs.com/',                                    'n', 'npm')
-
-    .links__section(data-level="1")
       +title('Reddit', 'R', 'https://reddit.com')
       ul.links__ul
         +link('https://reddit.com/r/unixporn',            'U', 'Unix')
@@ -49,14 +64,23 @@ mixin title(text, key, url)
         +link('https://reddit.com/r/3dprinting',          '3', '3D Printing')
         +link('https://reddit.com/r/conkyporn',           'C', 'Conky')
         +link('https://www.reddit.com/r/linuxquestions/', 'Q', 'Linux Questions')
+        +link('https://www.reddit.com/r/linux4noobs/',    '4', 'linux4noobs')
 
-  .links__row
+    .links__section(data-level="1")
+      +title('Comics', 'C')
+      ul.links__ul
+        +link('https://xkcd.com/', 'x', 'xkcd')
+        +link('https://www.commitstrip.com/en/', 'C', 'CommitStrip')
+        +link('https://turnoff.us/', 't', 'turnoff.us')
+        +link('http://www.mollybeans.com/', 'm', 'm0llyBeans')
 
     .links__section(data-level="1")
       +title('Social', 'o')
       ul.links__ul
         +link('https://facebook.com', 'F', 'Facebook')
         +link('https://twitter.com',  'T', 'Twitter')
+
+  .links__row
 
     .links__section(data-level="1")
       +title('Shopping', 'S')
@@ -65,5 +89,6 @@ mixin title(text, key, url)
         +link('https://aliexpress.com',          'E', 'AliExpress')
         +link('https://ca.pcpartpicker.com',     'P', 'PCPartPicker')
 
+    .links__section(data-level="1")
     .links__section(data-level="1")
     .links__section(data-level="1")

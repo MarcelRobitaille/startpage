@@ -136,7 +136,7 @@ _.byId('search__form').addEventListener('submit', (event) => {
     let url = $search.value
     if(!/^http(s|):\/\//.test(url)) url = `http://${url}`
 
-    completionList.push(url)
+    if(!completionList.includes(url)) completionList.push(url)
     localStorage.setItem('completionList', JSON.stringify(completionList))
 
     location.href = url
