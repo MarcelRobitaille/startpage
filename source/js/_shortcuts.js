@@ -35,6 +35,8 @@ const $search        = _.byId('search__shortcut')
 const $search__input = _.byId('search__input')
 
 document.addEventListener('keydown', (event) => {
+  if(event.key === 'l' && event.ctrlKey) return
+
   let $elements = $blocks
 
   if(event.key === 'Escape') return removeFocus()
@@ -54,7 +56,10 @@ document.addEventListener('keydown', (event) => {
 
     if(event.key === 'Enter' && level === 1){
       const $link = $focus.querySelector('.links__section__title a')
-      if($link) return location.href = $link.getAttribute('href')
+      if($link){
+        location.href = $link.getAttribute('href')
+        return
+      }
     }
 
     $elements   = [...$focus.getElementsByClassName('shortcut')].filter(($el) => parseInt($el.getAttribute('data-level')) === level + 1)
