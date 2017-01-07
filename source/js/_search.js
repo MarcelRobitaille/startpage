@@ -1,13 +1,10 @@
 'use strict'
 
 const _ = require('../../functions/_.js')
-const axios = require('axios')
-const co = require('co')
 
 const $search     = _.byId('search__input')
 const $select     = _.byId('search__select')
 const $completion = _.byId('search__completion')
-const $options    = _.byClassName('search__option')
 
 $select.firstChild.setAttribute('selected', 'selected')
 
@@ -78,7 +75,7 @@ $search.addEventListener('keyup', (event) => {
 
   for(let i = 0; i < $completion.children.length; i++){
     const $el = $completion.children[i]
-    const url = $el.innerText
+    const url = $el.textContent
     const index = matches.indexOf(url)
     if(~index){
       matches.splice(index, 1)
@@ -89,7 +86,7 @@ $search.addEventListener('keyup', (event) => {
   for(let i = 0; i < matches.length; i++){
     const $match = document.createElement('LI')
     $match.classList.add('search__completion__li')
-    $match.innerText = matches[i]
+    $match.textContent = matches[i]
     $completion.appendChild($match)
   }
   if(!$completion.querySelector('.focus') && $completion.firstElementChild) $completion.firstElementChild.classList.add('focus')

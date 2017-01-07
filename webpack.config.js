@@ -22,8 +22,11 @@ function config(debug){
     entry: {
       'main': [
         'babel-polyfill',
-        './source/js/main.js',
-        './source/js/_shortcuts.js',
+        './source/js/shortcuts.js',
+        './source/js/shortcuts.underline.js',
+        './source/js/shortcuts.focus.js',
+        './source/js/shortcuts.actions.js',
+        './source/js/shortcuts.handler.js',
         './source/js/_search.js',
         './functions/_.js',
       ],

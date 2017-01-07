@@ -13,7 +13,8 @@ const parsedConfig = {
 
 function webpackHandler(cb){
   return function(err, stats){
-    if(err) throw new util.pluginError('webpack', err)
+    const errors = stats.compilation.errors
+    if(errors.length) throw new util.PluginError('webpack', errors[0].error)
     cb()
   }
 }
@@ -21,7 +22,7 @@ function webpackHandler(cb){
 const files = _.flatten(_.values(parsedConfig.debug.entry))
 
 module.exports = (gulp) => {
-  gulp.task('js', (cb) => webpack(parsedConfig.debug, webpackHandler(cb)) )
+  gulp.task('js', (cb) => webpack(parsedConfig.debug, webpackHandler(cb)))
 
   gulp.task('build-js', (cb) => webpack(parsedConfig.prod, webpackHandler(cb)) )
 
