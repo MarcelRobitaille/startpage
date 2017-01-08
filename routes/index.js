@@ -1,10 +1,13 @@
 'use strict'
 
-const express      = require('express')
-const router       = express.Router()
+const path = require('path')
+const load = (file) => require(path.join(__dirname, file))
 
-router.get('/', (req, res, next) => {
-  res.render('index')
+const express = require('express')
+const router = express.Router()
+
+router.get('/', (req, res) => {
+  res.render('index', load('../functions/pugfn.js'))
 })
 
 module.exports = router
