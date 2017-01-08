@@ -48,6 +48,8 @@ module.exports = gulp => {
           .pipe($.rev())
           .pipe(require('dbust').gulp())
           .pipe(gulp.dest('public/' + styles[mainFile].dir))
+          .pipe(require('gulp-gzip')())
+          .pipe(gulp.dest('public/' + styles[mainFile].dir))
           .on('end', cb)
 
       }).catch((err) => { throw err })
