@@ -14,7 +14,7 @@ const self = (event) => {
   if(event.key === 'l' && event.ctrlKey) return 'skip.urlbar'
 
   // If escape key, unfocus everything
-  if(event.key === 'Escape') return actions.esc()
+  if(event.key === 'Escape') return actions.reset()
 
   // If search bar focused, return and let it's handler handle it
   if(document.querySelector(':focus') === $search__input) return 'skip.search'
