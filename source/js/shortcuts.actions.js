@@ -6,9 +6,9 @@ const $search__input = _.byId('search__input')
 
 const actions = {
 
-  esc: () => {
+  reset: () => {
 
-    // Remove focus from all elements
+    // Remove focus from current element
     foc.remove()
 
     // Blur search bar
@@ -17,24 +17,26 @@ const actions = {
     // Hide all suggested search items
     _.byId('search__completion').innerHTML = ''
 
-    return 'actions.esc'
   },
 
   back: () => {
-    const $focus = _.parent(foc.get(), '.shortcut__parent')
-    foc.remove()
-    $search__input.blur()
-    _.byId('search__completion').innerHTML = ''
-    if($focus) foc.set($focus)
 
-    return 'actions.back'
+    // Find parent of focused element that matches .shortcut__parent
+    const $focus = _.parent(foc.get(), '.shortcut__parent')
+
+    // Reset everything
+    actions.reset()
+
+    // If parent found, reset focus
+    if($focus) foc.set($focus)
   },
 
   followLinkUnderElement: ($el) => {
+    if(typeof $el === 'undefined') throw new Error(`First argument is required`)
+    if(!$el || typeof $el !== 'object' || !('tagName' in $el)) throw new Error(`First argument must be a valid html element`)
     const $link = $el.querySelector('.links__section__title a')
     if(!$link) throw new Error(`Could not find link under ${$el}`)
-    location.href = $link.getAttribute('href')
-    return 'actions.followLinkUnderElement'
+    window.location.href = $link.getAttribute('href')
   },
 
 }
