@@ -1,16 +1,19 @@
 'use strict'
 
 const plan = require('flightplan')
-const username = 'marcel'
-const startFile = 'bin/www'
 
 plan.target('prod', {
   host: 'marcelrobitaille.me',
-  username,
-  agent: process.env.SSH_AUTH_SOCK
+  username: 'marcel',
+  agent: process.env.SSH_AUTH_SOCK,
+  privateKey: '/home/marcel/.ssh/id_rsa',
 })
 
-plan.local(function(local){
+plan.remote((remote) => {
+  remote.exec('rm -rf ~/startpage/public')
+})
+
+plan.local((local) => {
   local.log('Run build')
   local.exec('gulp build')
   local.log('Copy files to remote host')
@@ -23,4 +26,8 @@ plan.local(function(local){
   }
 
   local.transfer(filesToCopy, '~/startpage/')
+})
+
+plan.remote((remote) => {
+  remote.exec('cd startpage && forever restart bin/www')
 })
