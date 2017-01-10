@@ -3,6 +3,7 @@
 const process = require('process')
 const webpack = require('webpack')
 
+const Dbust = require('webpack-dbust')
 const CompressionPlugin = require('compression-webpack-plugin')
 
 const debug   = process.env.NODE_ENV !== "production"
@@ -14,7 +15,7 @@ function config(debug){
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-    require('dbust').webpack,
+    new Dbust(),
     new CompressionPlugin(),
   ])
 

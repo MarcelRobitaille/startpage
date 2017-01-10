@@ -19,7 +19,7 @@ const styles  = {
 
 }
 
-module.exports = gulp => {
+module.exports = (gulp) => {
   Object.keys(styles).forEach(mainFile => {
 
     gulp.task(mainFile, () => {
@@ -39,20 +39,19 @@ module.exports = gulp => {
       co(function*(){
         const file = yield fs.readFile('./manifest.json')
         const json = JSON.parse(file)
-        if(mainFile.replace('scss', 'css') in json) fs.unlink(`./public/css/${json[mainFile.replace('scss', 'css')]}`)
 
         gulp.src('./source/' + styles[mainFile].dir + mainFile)
           .pipe($.sass())
           .pipe($.cssnano())
           .pipe($.autoprefixer())
           .pipe($.rev())
-          .pipe(require('dbust').gulp())
+          .pipe(require('gulp-dbust')({ base: path.join(__dirname, '../') }))
           .pipe(gulp.dest('public/' + styles[mainFile].dir))
-          .pipe(require('gulp-gzip')())
+          .pipe($.gzip())
           .pipe(gulp.dest('public/' + styles[mainFile].dir))
           .on('end', cb)
 
-      }).catch((err) => { throw err })
+      }).catch((err) => { console.error(err) })
     })
 
     gulp.task('watch-' + mainFile, () => {
