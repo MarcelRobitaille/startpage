@@ -1,7 +1,7 @@
 'use strict'
 
 const fs   = require('fs')
-const gulp = require('gulp')
+const gulp = require('gulp-autoplumb')
 
 fs.readdirSync('./tasks/').forEach(file => {
   require('./tasks/' + file)(gulp)
