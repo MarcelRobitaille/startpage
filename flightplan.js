@@ -6,7 +6,6 @@ plan.target('prod', {
   host: 'marcelrobitaille.me',
   username: 'marcel',
   agent: process.env.SSH_AUTH_SOCK,
-  privateKey: '/home/marcel/.ssh/id_rsa',
 })
 
 plan.remote((remote) => {
