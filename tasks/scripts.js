@@ -1,10 +1,13 @@
 'use strict'
 
-const _             = require('lodash')
-const util          = require('gulp-util')
-const process       = require('process')
-const webpack       = require('webpack')
-const webpackConfig = require('../webpack.config.js')
+const path = require('path')
+const load = (file) => require(path.join(__dirname, file))
+
+const _ = require('lodash')
+const chalk = require('chalk')
+const webpack = require('webpack')
+
+const webpackConfig = load('../webpack.config.js')
 
 const parsedConfig = {
   debug: webpackConfig(true),
@@ -14,7 +17,13 @@ const parsedConfig = {
 function webpackHandler(cb){
   return function(err, stats){
     const errors = stats.compilation.errors
-    if(errors.length) throw new util.PluginError('webpack', errors[0].error)
+    if(errors.length){
+      const err = errors[0].error
+      console.log()
+      console.error(chalk.red.bold(err.message))
+      console.error(chalk.red(err.stack))
+      console.log()
+    }
     cb()
   }
 }
