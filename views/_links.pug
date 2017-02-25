@@ -42,14 +42,17 @@ mixin title(text, key, url)
       +title('Projects', 'j')
       ul.links__ul
         +link('http://localhost:9615', 'a', 'Apollo')
+        +link('http://192.168.0.120/youtube-backup', 'y', 'Youtube Backup')
+        +link('http://192.168.0.120:8096', 'e', 'Emby')
+        +link('http://localhost:8384', 's', 'Syncthing Client')
+        +link('http://192.168.0.120:8384', 'r', 'Syncthing Server')
 
   .links__row
 
     .links__section(data-level="1")
       +title('University', 'u', 'http://www.umoncton.ca')
       ul.links__ul
-        +link('https://www.umoncton.ca',                                 'u', 'Umoncton')
-        +link('https://clic.umoncton.ca/portailclic_html_v2/index.html', 'c', 'Clic')
+        +link('https://clic.umoncton.ca/index_ipas.asp', 'c', 'Clic')
         +link('https://coop.umoncton.ca/login/student.htm',              'o', 'Coop')
         +link('https://socrate.umoncton.ca/accesprotege.htm',            'm', 'ManiWeb')
         +link('https://fichiers4.umoncton.ca/htcomnet/',                 'f', 'Files')
