@@ -26,6 +26,7 @@
     "compression-webpack-plugin": "0.3.2",
     "dbust": "2.0.2",
     "flightplan": "0.6.15",
+    "fuse.js": "2.6.2",
     "gulp": "3.9.1",
     "gulp-autoplumb": "1.0.5",
     "gulp-autoprefixer": "3.1.1",

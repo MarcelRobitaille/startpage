@@ -1,6 +1,7 @@
 'use strict'
 
 const _ = require('../../functions/_.js')
+const Fuse = require('fuse.js')
 
 const $search     = _.byId('search__input')
 const $select     = _.byId('search__select')
@@ -16,6 +17,7 @@ const invalidURLChars = ' '
 const urlRegex = new RegExp(`^([^${invalidURLChars}]+\\.(${topLevelDomains})|(\\d{1,3}\\.){3}\\d{1,3})[^ ]*$`, 'i')
 const localhostRegex = /^(https?:\/\/|)localhost/i
 const completionList = JSON.parse(localStorage.getItem('completionList')) || []
+const fuse = new Fuse(completionList)
 
 
 /*
@@ -71,7 +73,7 @@ $search.addEventListener('keyup', (event) => {
     return
   }
 
-  const matches = completionList.filter((url) => _.fuzzy(url, $search.value))
+  const matches = fuse.search($search.value).map(index => completionList[index])
 
   for(let i = 0; i < $completion.children.length; i++){
     const $el = $completion.children[i]
