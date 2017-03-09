@@ -1,11 +1,14 @@
 'use strict'
 
+const process = require('process')
+
 const plan = require('flightplan')
 
 plan.target('prod', {
   host: 'marcelrobitaille.me',
   username: 'marcel',
   agent: process.env.SSH_AUTH_SOCK,
+  privateKey: '/home/marcel/.ssh/id_rsa',
 })
 
 plan.remote((remote) => {
@@ -16,8 +19,7 @@ plan.local((local) => {
   local.log('Run build')
   local.exec('gulp build')
   local.log('Copy files to remote host')
-  // const filesToCopy = local.exec('find /home/marcel/code/clairitech/website/')
-  const filesToCopy = local.exec('git ls-files && git ls-files -o --exclude-standard && find public', {silent: true});
+  const filesToCopy = local.exec('git ls-files && git ls-files -o --exclude-standard && find public', {silent: true})
   const deleted = local.exec('git ls-files -d', {silent: true}).stdout || ''
   if(deleted.length){
     const reg = new RegExp(deleted.split('\n').join('\n|'), 'gm')

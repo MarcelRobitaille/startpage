@@ -85,12 +85,16 @@ $search.addEventListener('keyup', (event) => {
   }
   for(let i = 0; i < matches.length; i++){
     const $match = document.createElement('LI')
+    const $a = document.createElement('A')
+    const url = matches[i]
+    $a.textContent = url
+    $a.setAttribute('href', url)
+    $a.classList.add('search__completion__li__a')
     $match.classList.add('search__completion__li')
-    $match.textContent = matches[i]
+    $match.appendChild($a)
     $completion.appendChild($match)
   }
   if(!$completion.querySelector('.focus') && $completion.firstElementChild) $completion.firstElementChild.classList.add('focus')
-  // $completion.innerHTML = matches.map((match) => `<li class="search__completion__li">${match}</li>`)
 
 
   //
@@ -140,11 +144,14 @@ const searchWithEngine = () => {
 $search.addEventListener('keyup', (event) => {
   if(event.key !== 'Enter') return
 
-  event.preventDefault()
-  event.stopPropagation()
+  if(event.ctrlKey) return searchWithEngine()
 
   const $focus = $completion.querySelector('.focus')
-  if($focus && !event.ctrlKey) return searchWithEngine()
+  if($focus){
+    const url = $focus.textContent
+    window.location.href = url
+    return
+  }
 
   if(localhostRegex.test($search.value) || urlRegex.test($search.value)){
     let url = $search.value

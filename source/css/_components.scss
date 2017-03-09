@@ -50,13 +50,20 @@
       }
         .search__completion__li{
           padding: 20px;
-          color: $cream;
           list-style: none;
+          color: $cream;
           &.focus{
-            // color: $red;//lighten($purple, 15%);
             text-decoration: underline;
           }
         }
+          .search__completion__li__a,
+          .search__completion__li__a:hover,
+          .search__completion__li__a:focus,
+          .search__completion__li__a:active,
+          .search__completion__li__a:visited{
+            text-decoration: none;
+            color: inherit;
+          }
 
     .search__select{
       padding: 0 20px;
