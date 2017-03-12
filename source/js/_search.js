@@ -66,9 +66,10 @@ $search.addEventListener('keyup', (event) => {
     ArrowUp: 'previousElementSibling',
   }[event.key]
 
-  if(direction && event.ctrlKey) handleSearchEngines(event)
+  if(direction && event.ctrlKey) return handleSearchEngines(event)
 
-  if($search.value.length < 3){
+  console.log($search.value.lenght)
+  if($search.value.length < 3 || $search.value.includes(' ')){
     $completion.innerHTML = ''
     return
   }
