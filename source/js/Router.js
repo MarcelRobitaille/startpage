@@ -16,14 +16,6 @@ export default class Router {
     const favourites = new Favourites(this.input)
     results.push(...favourites.results())
 
-    /*
-    *
-    * Duck duck go
-    *
-    */
-
-    results.push(new DDG(this.input))
-
 
     /*
     *
@@ -33,6 +25,15 @@ export default class Router {
 
     const url = new URL(this.input)
     if (url.isValid()) results.push(url)
+
+
+    /*
+    *
+    * Duck duck go
+    *
+    */
+
+    results.push(new DDG(this.input))
 
     return results
   }
