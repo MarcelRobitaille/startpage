@@ -20,11 +20,11 @@ module.exports = gulp => {
       .pipe(gulp.dest('public'))
   })
 
-  gulp.task('build-svg', (cb) => {
+  gulp.task('build-svg', () => {
 
     return gulp.src('source/svg/*.svg')
       .pipe($.svgmin())
-      .pipe(gulp.dest('public/svg/'))
+      .pipe(gulp.dest('build/svg/'))
       .pipe($.svgSprite({
         mode: {
           symbol: {
@@ -35,7 +35,7 @@ module.exports = gulp => {
         }
       }))
       .pipe($.rename('sprite.svg'))
-      .pipe(gulp.dest('public'))
+      .pipe(gulp.dest('build'))
 
   })
 }

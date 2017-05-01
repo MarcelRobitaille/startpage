@@ -1,130 +1,60 @@
-@mixin outline-transition(){
-  outline: 1px solid transparent;
-  transition: outline-color .3s ease-in-out;
+.content {
+  height: 100vh;
+  display: flex;
 }
 
-.content{
-  padding: 30px;
-}
-
-.search{
-  padding: 30px;
-  @include outline-transition;
-}
-  .search__title{
-
+  .search {
+    position: relative;
+    border-radius: 3px;
+    flex: 1;
+    margin: 30px;
   }
-  .search__row{
-    display: flex;
-  }
-    .search__box{
-      flex: 1;
-      margin-right: 20px;
-      position: relative;
-      outline: 1px solid $yellow;
-      border-radius: 3px;
+    .search__input{
+      width: calc(100% - 30px);
+      margin-bottom: 20px;
+      padding: 15px;
+      border: none;
+      font-size: 20px;
+      border-bottom: 2px solid rgba($cream, .5);
+      color: $cream;
+      background: transparent;
     }
-      .search__input{
-        width: calc(100% - 30px);
-        padding: 15px;
-        border: none;
+    .dropdown{
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      background: lighten($grey, 5%);
+      z-index: 1;
+      &:empty{
+        display: none;
+      }
+    }
+      .dropdown__li{
+        padding: 10px;
+        list-style: none;
         color: $cream;
-        background: lighten($grey, 5%);
-        transition: background .3s ease-in-out;
-        &:focus{
-          background: lighten($grey, 7%);
+        &.focus{
+          text-decoration: underline;
         }
       }
-      .search__completion{
-        left: 0;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        position: absolute;
-        background: lighten($grey, 5%);
-        outline: 1px solid $yellow;
-        z-index: 1;
-        &:empty{
-          display: none;
+        .search__result-wrapper {
+          display: flex;
+          align-items: center;
         }
-      }
-        .search__completion__li{
-          padding: 20px;
-          list-style: none;
-          color: $cream;
-          &.focus{
-            text-decoration: underline;
+          .search__result__svg {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            padding: 10px;
+            fill: $cream;
           }
-        }
-          .search__completion__li__a,
-          .search__completion__li__a:hover,
-          .search__completion__li__a:focus,
-          .search__completion__li__a:active,
-          .search__completion__li__a:visited{
+          .dropdown__li__a,
+          .dropdown__li__a:hover,
+          .dropdown__li__a:focus,
+          .dropdown__li__a:active,
+          .dropdown__li__a:visited{
             text-decoration: none;
             color: inherit;
-          }
-
-    .search__select{
-      padding: 0 20px;
-      color: $cream;
-      border-radius: 3px;
-      background: darken($purple, 15%);
-      border: 2px solid $purple;
-      -moz-appearance: none;
-    }
-      .search__option{
-        line-height: 20px;
-      }
-
-.links{
-  padding: 30px 20px;
-  @include outline-transition;
-}
-  .links__title{
-    padding: 0 10px;
-  }
-  .links__row{
-    display: flex;
-    padding: 10px 0;
-  }
-    .links__section{
-      margin: 0 10px;
-      flex: 1;
-      outline-offset: 10px;
-      @include outline-transition;
-    }
-      .links__section__title{
-        margin: 0;
-        margin-bottom: 20px;
-        position: relative;
-        line-height: 30px;
-        &,
-        & a,
-        & a:visited{
-          color: $brown;
-          text-decoration: none;
-        }
-        &:after{
-          content: ' ';
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 2px;
-          position: absolute;
-          background: $brown;
-        }
-      }
-      .links__ul{
-        padding: 0;
-        margin: 0;
-      }
-        .links__li{
-          list-style: none;
-        }
-          .links__a{
-            text-decoration: none;
-            color: $orange;
-            display: block;
-            line-height: 35px;
           }

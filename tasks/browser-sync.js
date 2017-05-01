@@ -3,12 +3,11 @@
 module.exports = gulp => {
   gulp.task('browser-sync', () => {
     require('browser-sync').init({
-      proxy: 'http://localhost:8080',
+      server: { baseDir: './public/' },
       open: false,
       port: 4000,
-      browser: 'google chrome',
+      browser: 'firefox',
       files: [
-        'views/**/*.pug',
         'source/**/*.pug',
         'public/**/*.js',
         'public/images/*',

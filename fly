@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+ssh marcelrobitaille.me "rm -rf startpage"
+
+echo "Running build"
+gulp build
+
+echo "Copying files"
+cd build
+rsync -a ./ marcel@marcelrobitaille.me:~/startpage

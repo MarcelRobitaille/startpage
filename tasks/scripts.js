@@ -3,7 +3,6 @@
 const path = require('path')
 const load = (file) => require(path.join(__dirname, file))
 
-const _ = require('lodash')
 const chalk = require('chalk')
 const webpack = require('webpack')
 
@@ -28,14 +27,12 @@ function webpackHandler(cb){
   }
 }
 
-const files = _.flatten(_.values(parsedConfig.debug.entry))
-
 module.exports = (gulp) => {
   gulp.task('js', (cb) => webpack(parsedConfig.debug, webpackHandler(cb)))
 
   gulp.task('build-js', (cb) => webpack(parsedConfig.prod, webpackHandler(cb)) )
 
   gulp.task('watch-js', () => {
-    gulp.watch(files, ['js'])
+    gulp.watch('./source/**/*.js', ['js'])
   })
 }

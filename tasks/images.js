@@ -17,6 +17,6 @@ module.exports = gulp => {
     return gulp.src('./source/img/**')
       .pipe(newer('./public/img/'))
       .pipe(imagemin([ jpegoptim({ progressive: true, max: 75 }), imagemin.svgo() ], { progressive: true }))
-      .pipe(gulp.dest('./public/img/'))
+      .pipe(gulp.dest('./build/img/'))
   })
 }

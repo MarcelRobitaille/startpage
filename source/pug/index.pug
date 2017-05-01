@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    title Start Page
+    link(rel="stylesheet", href=asset('/css/global.css'))
+
+  body
+    div
+      include ../../public/sprite.svg
+    .content
+      .search
+        input.search__input#search__input(type="text", autocomplete="off", autofocus, placeholder=" . . .")
+        ul.dropdown#dropdown
+
+
+    script(src=asset('/js/main.js'))

@@ -109,7 +109,7 @@ describe('Shortcuts', () => {
         // Setup
         foc.set(_.byId('section__google'))
         $search__input.focus()
-        _.byId('search__completion').innerHTML = 'This is only a test'
+        _.byId('dropdown').innerHTML = 'This is only a test'
 
         // Call
         actions.back()
@@ -117,7 +117,7 @@ describe('Shortcuts', () => {
         // Test
         se(foc.get(), _.byId('links'))
         se(document.querySelector(':focus'), null)
-        se(_.byId('search__completion').innerHTML, '')
+        se(_.byId('dropdown').innerHTML, '')
       })
     })
 
