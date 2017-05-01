@@ -18,7 +18,7 @@ const fuse = new Fuse(results, {
   ]
 })
 
-class Favourites {
+export default class Favourites {
   constructor(input) {
     this.input = input
   }
@@ -33,5 +33,3 @@ class Favourites {
     return fuse.search(this.input)
   }
 }
-
-export default Favourites

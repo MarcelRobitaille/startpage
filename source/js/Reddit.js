@@ -11,7 +11,7 @@ const subs = [
   'linux4noobs',
 ]
 
-class Reddit extends Favourite {
+export default class Reddit extends Favourite {
 
   constructor(sub) {
     super()
@@ -23,5 +23,3 @@ class Reddit extends Favourite {
     return subs.map(sub => new Reddit(sub))
   }
 }
-
-export default Reddit

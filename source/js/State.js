@@ -1,4 +1,4 @@
-class State {
+export default class State {
   setResults(results) {
     this.results = results
 
@@ -12,5 +12,3 @@ class State {
     this.focused = this.results[i].url
   }
 }
-
-export default State

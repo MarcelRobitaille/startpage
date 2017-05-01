@@ -1,4 +1,4 @@
-class Favourite {
+export default class Favourite {
 
   constructor(item) {
     if (item) {
@@ -18,5 +18,3 @@ class Favourite {
     `
   }
 }
-
-export default Favourite

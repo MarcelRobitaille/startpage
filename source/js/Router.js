@@ -2,7 +2,7 @@ import Favourites from './Favourites.js'
 import URL from './URL.js'
 import DDG from './DDG.js'
 
-class Router {
+export default class Router {
   constructor(input) {
     this.input = input.trim()
   }
@@ -37,5 +37,3 @@ class Router {
     return results
   }
 }
-
-export default Router
