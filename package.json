@@ -25,6 +25,7 @@
     "browser-sync": "2.18.8",
     "compression-webpack-plugin": "0.4.0",
     "dbust": "2.0.2",
+    "del": "^2.2.2",
     "flightplan": "0.6.15",
     "fuse.js": "3.0.0",
     "gulp": "3.9.1",
