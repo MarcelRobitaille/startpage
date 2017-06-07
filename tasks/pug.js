@@ -7,8 +7,9 @@ const fs = require('fs')
 
 const locals = {
   asset: (file) => {
-    const manifest = JSON.parse(fs.readFileSync('./manifest.json'))
     if (process.env.NODE_ENV === 'development') return file
+
+    const manifest = JSON.parse(fs.readFileSync('./manifest.json'))
 
     const filename = path.basename(file)
     const dirname  = path.dirname(file)
