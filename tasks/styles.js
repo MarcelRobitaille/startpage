@@ -38,7 +38,7 @@ module.exports = (gulp) => {
         .pipe($.cssnano())
         .pipe($.autoprefixer())
         .pipe($.rev())
-        .pipe(require('gulp-dbust')({ base: path.join(__dirname, '../') }))
+        .pipe($.dbust())
         .pipe(gulp.dest('build/css/'))
         .pipe($.gzip())
         .pipe(gulp.dest('build/css/'))
