@@ -4,6 +4,7 @@ const topLevelDomains = 'ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|b
 const invalidURLChars = ' '
 const urlRegex = new RegExp(`^([^${invalidURLChars}]+\\.(${topLevelDomains})|(\\d{1,3}\\.){3}\\d{1,3})[^ ]*$`, 'i')
 const localhostRegex = /^(https?:\/\/|)localhost/i
+const ipRegex = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/
 
 class URL {
   constructor(url) {
@@ -12,7 +13,7 @@ class URL {
   }
 
   isValid() {
-    return localhostRegex.test(this.url) || urlRegex.test(this.url)
+    return localhostRegex.test(this.url) || ipRegex.test(this.url) || urlRegex.test(this.url)
   }
 
   render() {
@@ -28,3 +29,4 @@ class URL {
 }
 
 export default URL
+
