@@ -3,4 +3,6 @@ public
 build
 manifest.json
 *.swp
+*.swo
+tags
 

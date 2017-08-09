@@ -1,16 +1,58 @@
 import Fuse from 'fuse.js'
 
 import Reddit from './Reddit.js'
-import Uni from './Uni.js'
+import Favourite from './Favourite.js'
 
 const results = [
-  ...Reddit.results(),
-  ...Uni.results(),
+
+
+  /**
+   * Uni
+   */
+
+  ...[
+    { text: 'Umoncton', url: 'https://www.umoncton.ca' },
+    { text: 'Clic', url: 'https://clic.umoncton.ca/index_ipas.asp' },
+    { text: 'Coop', url: 'https://coop.umoncton.ca/login/student.htm' },
+    { text: 'Files', url: 'https://fichiers4.umoncton.ca/htcomnet/' },
+    { text: 'ManiWeb', url: 'https://socrate.umoncton.ca/accesprotege.htm' },
+    { text: 'OneNote', url: 'https://www.onenote.com/notebooks' },
+  ].map(u => new Favourite(u)),
+
+
+  /**
+   * Reddit
+   */
+
+  ...[
+    '',
+    'ProgrammerHumor',
+    'unixporn',
+    'conkyporn',
+    'LinuxQuestions',
+    'LinuxMasterRace',
+    'startpages',
+    'linux4noobs',
+  ].map(sub => new Reddit(sub)),
+
+
+  /**
+   * Language tools
+   */
+
+  ...[
+    { text: 'Linguee', url: 'https://www.linguee.com' },
+    { text: 'Synonymes', url: 'http://www.synonymes.com/' },
+    { text: 'Word Reference', url: 'http://wordreference.com' },
+  ].map(f => new Favourite(f)),
 ]
+
+console.log(results)
 
 const fuse = new Fuse(results, {
   shouldSort: true,
-  threshold: 0.3,
+  location: 1,
+  threshold: 0.7,
   maxPatternLength: 32,
   minMatchCharLength: 1,
   keys: [
@@ -33,3 +75,4 @@ export default class Favourites {
     return fuse.search(this.input)
   }
 }
+

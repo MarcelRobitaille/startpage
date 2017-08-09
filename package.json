@@ -8,6 +8,7 @@
     "url": "git://github.com/Marcel-Robitaille/startpage.git"
   },
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "co": "4.6.0",
     "compression": "1.6.2",
     "express": "4.15.3",

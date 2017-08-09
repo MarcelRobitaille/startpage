@@ -23,7 +23,7 @@ function config(debug){
   ])
 
   return {
-    devtool: debug ? 'eval' : false,
+    devtool: debug ? 'sourcemap' : false,
     entry: {
       'main': [
         'babel-polyfill',

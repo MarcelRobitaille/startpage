@@ -17,3 +17,4 @@ class DDG {
 }
 
 export default DDG
+

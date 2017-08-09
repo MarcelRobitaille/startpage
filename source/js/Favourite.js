@@ -2,7 +2,7 @@ export default class Favourite {
 
   constructor(item) {
     if (item) {
-      this.text = `/${this.prefix()}/${item.text}`
+      this.text = item.text
       this.url = item.url
     }
   }
@@ -18,3 +18,4 @@ export default class Favourite {
     `
   }
 }
+

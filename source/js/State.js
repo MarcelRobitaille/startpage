@@ -12,3 +12,4 @@ export default class State {
     this.focused = this.results[i].url
   }
 }
+

@@ -38,3 +38,4 @@ export default class Router {
     return results
   }
 }
+

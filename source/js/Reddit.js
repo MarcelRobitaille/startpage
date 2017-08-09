@@ -1,25 +1,10 @@
 import Favourite from './Favourite.js'
 
-const subs = [
-  '',
-  'ProgrammerHumor',
-  'unixporn',
-  'conkyporn',
-  'LinuxQuestions',
-  'LinuxMasterRace',
-  'startpages',
-  'linux4noobs',
-]
-
 export default class Reddit extends Favourite {
 
   constructor(sub) {
-    super()
-    this.text = `/r/${sub}`
-    this.url = `https://reddit.com/${sub === '' ? '' : this.text}`
-  }
-
-  static results() {
-    return subs.map(sub => new Reddit(sub))
+    const text = `/r/${sub}`
+    super({ text, url: `https://reddit.com/${sub === '' ? '' : text}` })
   }
 }
+

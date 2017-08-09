@@ -18,8 +18,7 @@ let state = new State()
 
 const render = () => {
   $dropdown.innerHTML = state.results
-    .map(result => {
-      return `<li class='dropdown__li ${result.url === state.focused ? 'focus' : ''}'>${result.render()}</li>`})
+    .map(result => `<li class='dropdown__li ${result.url === state.focused ? 'focus' : ''}'>${result.render()}</li>`)
     .join('')
 }
 
@@ -32,7 +31,7 @@ const render = () => {
 
 $search.addEventListener('keyup', event => {
 
-  if ([ 'ArrowDown', 'ArrowUp', 'Enter' ].indexOf(event.key) !== -1) return
+  if ([ 'ArrowDown', 'ArrowUp', 'n', 'p', 'Control', 'Enter' ].indexOf(event.key) !== -1) return
 
   // Get router instance
   const router = new Router($search.value)
@@ -51,11 +50,13 @@ $search.addEventListener('keyup', event => {
 */
 
 $search.addEventListener('keydown', (event) => {
-  const direction = {
-    ArrowDown: 1,
-    ArrowUp: -1,
-  }[event.key]
+  console.log(event)
+  const directions = event.ctrlKey
+    ? { n: 1, p: -1 }
+    : { ArrowUp: -1, ArrowDown: 1 }
 
+  const direction = directions[event.key]
+  console.log(direction)
 
   // If key not an arrow key
   if (!direction) return
