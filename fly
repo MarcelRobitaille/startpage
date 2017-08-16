@@ -1,10 +1,17 @@
 #!/bin/zsh
 
+log () {
+  tput setaf 2; echo -e "\n$1\n"; tput sgr0
+}
+
+
 ssh marcelrobitaille.me "rm -rf startpage"
 
-echo "Running build"
-gulp build
+log "Running build"
+gulp build | sed 's/^/  /'
 
-echo "Copying files"
+
+log "Copying files"
 cd build
-rsync -a ./ marcel@marcelrobitaille.me:~/startpage
+rsync -a ./ marcel@marcelrobitaille.me:~/startpage | sed 's/^/  /'
+
