@@ -7,6 +7,15 @@ const results = [
 
 
   /**
+   * Self-hosted
+   */
+
+  ...[
+    { text: 'Apollo', url: 'http://marcelrobitaille.ddns.net' },
+  ].map(l => new Favourite(l)),
+
+
+  /**
    * Uni
    */
 
