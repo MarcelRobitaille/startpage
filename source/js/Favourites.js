@@ -36,8 +36,6 @@ const results = [
   ...[
     '',
     'ProgrammerHumor',
-    'unixporn',
-    'conkyporn',
     'LinuxQuestions',
     'LinuxMasterRace',
     'startpages',
