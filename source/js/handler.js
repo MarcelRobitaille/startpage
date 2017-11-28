@@ -31,7 +31,7 @@ const render = () => {
 
 $search.addEventListener('keyup', event => {
 
-  if ([ 'ArrowDown', 'ArrowUp', 'n', 'p', 'Control', 'Enter' ].indexOf(event.key) !== -1) return
+  if ([ 'ArrowDown', 'ArrowUp', 'Control', 'Enter' ].indexOf(event.key) !== -1) return
 
   // Get router instance
   const router = new Router($search.value)
