@@ -58,8 +58,8 @@ console.log(results)
 
 const fuse = new Fuse(results, {
   shouldSort: true,
-  location: 1,
-  threshold: 0.7,
+  location: 0,
+  threshold: 0.1,
   maxPatternLength: 32,
   minMatchCharLength: 1,
   keys: [
@@ -72,13 +72,7 @@ export default class Favourites {
     this.input = input
   }
 
-  isValid() {
-    return this.input.charAt(0) === '/'
-  }
-
   results() {
-    if (!this.isValid()) return []
-
     return fuse.search(this.input)
   }
 }
