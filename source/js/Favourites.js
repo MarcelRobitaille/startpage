@@ -11,7 +11,8 @@ const results = [
    */
 
   ...[
-    { text: 'Apollo', url: 'http://marcelrobitaille.ddns.net' },
+    { text: 'Apollo', url: 'http://apollo.robitaille.host' },
+    { text: 'Octopring', url: 'https://octoprint.robitaille.host' },
   ].map(l => new Favourite(l)),
 
 
@@ -42,6 +43,16 @@ const results = [
     'linux4noobs',
   ].map(sub => new Reddit(sub)),
 
+
+  /**
+   * Programming
+   */
+
+  ...[
+    { text: 'GitHub', url: 'https://github.com' },
+    { text: 'Gist', url: 'https://gist.github.com' },
+    { text: 'Bitbucket.org', url: 'https://bitbucket.org' },
+  ].map(l => new Favourite(l)),
 
   /**
    * Language tools
