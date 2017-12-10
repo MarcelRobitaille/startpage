@@ -12,7 +12,7 @@ const results = [
 
   ...[
     { text: 'Apollo', url: 'http://apollo.robitaille.host' },
-    { text: 'Octopring', url: 'https://octoprint.robitaille.host' },
+    { text: 'Octoprint', url: 'https://octoprint.robitaille.host' },
   ].map(l => new Favourite(l)),
 
 
@@ -54,6 +54,15 @@ const results = [
     { text: 'Bitbucket.org', url: 'https://bitbucket.org' },
   ].map(l => new Favourite(l)),
 
+
+  /**
+   * Engineering
+   */
+
+  ...[
+    { text: 'Desmos Graphing Calculator', url: 'https://www.desmos.com/calculator' },
+  ].map(l => new Favourite(l)),
+
   /**
    * Language tools
    */
@@ -62,6 +71,7 @@ const results = [
     { text: 'Linguee', url: 'https://www.linguee.com' },
     { text: 'Synonymes', url: 'http://www.synonymes.com/' },
     { text: 'Word Reference', url: 'http://wordreference.com' },
+    { text: 'Google Translate', url: 'https://translate.google.com' },
   ].map(f => new Favourite(f)),
 ]
 
