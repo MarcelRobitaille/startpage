@@ -56,7 +56,6 @@ $search.addEventListener('keydown', (event) => {
     : { ArrowUp: -1, ArrowDown: 1 }
 
   const direction = directions[event.key]
-  console.log(direction)
 
   // If key not an arrow key
   if (!direction) return
@@ -79,3 +78,4 @@ $search.addEventListener('keydown', (event) => {
   }
 
 })
+

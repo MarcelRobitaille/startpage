@@ -78,9 +78,9 @@ const results = [
 console.log(results)
 
 const fuse = new Fuse(results, {
-  shouldSort: true,
   location: 0,
   threshold: 0.1,
+  shouldSort: true,
   maxPatternLength: 32,
   minMatchCharLength: 1,
   keys: [

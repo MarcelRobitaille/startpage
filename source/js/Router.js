@@ -13,8 +13,10 @@ export default class Router {
     if (this.input === '') return results
 
 
-    const favourites = new Favourites(this.input)
-    results.push(...favourites.results())
+    if (!this.input.includes(' ')) {
+      const favourites = new Favourites(this.input)
+      results.push(...favourites.results())
+    }
 
 
     /*
