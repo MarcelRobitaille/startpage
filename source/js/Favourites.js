@@ -13,6 +13,7 @@ const results = [
   ...[
     { text: 'Apollo', url: 'http://apollo.robitaille.host' },
     { text: 'Octoprint', url: 'https://octoprint.robitaille.host' },
+    { text: 'Nextcloud', url: 'https://nextcloud.robitaille.host' },
   ].map(l => new Favourite(l)),
 
 
