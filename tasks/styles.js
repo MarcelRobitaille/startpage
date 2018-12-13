@@ -1,53 +1,58 @@
-'use strict'
-
-const $    = require('gulp-load-plugins')()
 const path = require('path')
 
-const styles  = {
-  'global.scss': {
-    files: [
-      './node_modules/normalize.css/normalize.css',
-      'source/css/global.scss',
-      'source/css/_components.scss',
-      'source/css/_vars.scss',
-      'source/css/_base.scss',
-    ],
-  },
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')()
+const sassGraph = require('sass-graph')
 
-}
+const prepend = substring => string => substring + string
 
-module.exports = (gulp) => {
-  Object.keys(styles).forEach(mainFile => {
+const styles = [
+  'global',
+]
 
-    gulp.task(mainFile, () => {
-      return gulp.src('./source/css/' + mainFile)
-        .pipe($.sourcemaps.init())
-        .pipe($.sass())
-        .pipe($.autoprefixer())
-        .pipe($.sourcemaps.write('maps/'))
-        .pipe(gulp.dest('public/css'))
-        .pipe($.if(
-          file => path.extname(file.path) === '.css',
-          require('browser-sync').stream()
-        ))
-    })
+const tasks = []
 
-    gulp.task('build-' + mainFile, () => {
-      return gulp.src('./source/css/' + mainFile)
-        .pipe($.sass())
-        .pipe($.cssnano())
-        .pipe($.autoprefixer())
-        .pipe($.rev())
-        .pipe($.dbust())
-        .pipe(gulp.dest('build/css/'))
-        .pipe($.gzip())
-        .pipe(gulp.dest('build/css/'))
-    })
+styles.map(style => {
 
-    gulp.task('watch-' + mainFile, () => {
-      gulp.watch(styles[mainFile].files, [mainFile])
-    })
+  const file = `./source/css/${style}.scss`
+  const files = Object
+    .keys(sassGraph.parseFile(file, { exclude: /node_modules/ }).index)
+    .filter(file => !/node_modules/.test(file))
+
+  const task = `css-${style}`
+  tasks.push(task)
+
+  gulp.task(`watch-css-${style}`, () =>
+    gulp.watch(files)
+      .on('all', gulp.series(task)))
+
+  gulp.task(task, () => {
+    return gulp.src(file)
+      .pipe($.sourcemaps.init())
+      .pipe($.sass())
+      .pipe($.autoprefixer())
+      .pipe($.sourcemaps.write('maps/'))
+      .pipe(gulp.dest('public/css'))
+      .pipe($.if(
+        file => path.extname(file.path) === '.css',
+        require('browser-sync').stream()
+      ))
   })
 
-  gulp.task('css', Object.keys(styles))
-}
+  gulp.task(`build-css-${style}`, () => {
+    return gulp.src(file)
+      .pipe($.sass())
+      .pipe($.cssnano())
+      .pipe($.autoprefixer())
+      .pipe($.rev())
+      .pipe($.dbust())
+      .pipe(gulp.dest('build/css/'))
+      .pipe($.gzip())
+      .pipe(gulp.dest('build/css/'))
+  })
+})
+
+gulp.task('css', gulp.parallel(tasks))
+gulp.task('build-css', gulp.parallel(tasks.map(prepend('build-'))))
+gulp.task('watch-css', gulp.parallel(tasks.map(prepend('watch-'))))
+

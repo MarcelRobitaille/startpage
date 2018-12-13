@@ -1,38 +1,57 @@
-'use strict'
-
-const path = require('path')
-const load = (file) => require(path.join(__dirname, file))
-
+const gulp = require('gulp')
 const chalk = require('chalk')
+const moment = require('moment')
+const gutil = require('gulp-util')
 const webpack = require('webpack')
+const browserSync = require('browser-sync').get('startpage')
 
-const webpackConfig = load('../webpack.config.js')
+const handler = (err, stats, options) => {
+  if (err) {
+    console.error(err)
+  }
 
-const parsedConfig = {
-  debug: webpackConfig(true),
-  prod: webpackConfig(false)
-}
+  options = Object.assign({
+    log: true,
+  }, options)
 
-function webpackHandler(cb){
-  return function(err, stats){
-    const errors = stats.compilation.errors
-    if(errors.length){
-      const err = errors[0].error
-      console.log()
-      console.error(chalk.red.bold(err.message))
-      console.error(chalk.red(err.stack))
-      console.log()
-    }
-    cb()
+  const errors = stats.compilation.errors
+  if (errors.length) {
+    const err = errors[0].error
+    console.log()
+    console.log(chalk.red.bold(err.message))
+    console.log(chalk.red(err.stack))
+    console.log()
+    return
+  }
+
+  browserSync.reload()
+
+  if (options.log) {
+    const time = moment
+      .duration(stats.endTime - stats.startTime)
+      .asSeconds()
+      .toFixed(2)
+    gutil.log(
+      `Finished '${chalk.cyan('webpack')}' after ${chalk.magenta(`${time} s`)}`
+    )
   }
 }
 
-module.exports = (gulp) => {
-  gulp.task('js', (cb) => webpack(parsedConfig.debug, webpackHandler(cb)))
+const config = require(__dirname + '/../webpack.config.js')
+const compiler = () => webpack(config())
 
-  gulp.task('build-js', (cb) => webpack(parsedConfig.prod, webpackHandler(cb)) )
+gulp.task('js', () => {
+  compiler().watch({
+    aggregateTimeout: 0,
+    ignored: /node_modules/,
+  }, handler)
+})
 
-  gulp.task('watch-js', () => {
-    gulp.watch('./source/**/*.js', ['js'])
+gulp.task('build-js', gulp.series(
+  'set-env',
+  cb => compiler().run((err, stats) => {
+    handler(err, stats, { log: false })
+    cb()
   })
-}
+))
+

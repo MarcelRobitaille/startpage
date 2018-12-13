@@ -8,7 +8,7 @@ log () {
 ssh marcelrobitaille.me "rm -rf startpage"
 
 log "Running build"
-gulp build | sed 's/^/  /'
+npm run gulp -- build | sed 's/^/  /'
 
 
 log "Copying files"

@@ -73,7 +73,7 @@ const results = [
   ...[
     { text: 'Linguee', url: 'https://www.linguee.com' },
     { text: 'Synonymes', url: 'http://www.synonymes.com/' },
-    { text: 'Word Reference', url: 'http://wordreference.com' },
+    { text: 'Word Reference', url: 'http://wordreference.com/enfr/' },
     { text: 'Google Translate', url: 'https://translate.google.com' },
   ].map(f => new Favourite(f)),
 
@@ -85,6 +85,15 @@ const results = [
   ...[
     { text: 'Facebook', url: 'https://facebook.com' },
     { text: 'Messenger', url: 'https://messenger.com' },
+  ].map(f => new Favourite(f)),
+
+
+  /**
+   * Media (I guess)
+   */
+
+  ...[
+    { text: 'Netflix', url: 'https://netflix.com' },
   ].map(f => new Favourite(f)),
 ]
 

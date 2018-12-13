@@ -1,5 +1,3 @@
-'use strict'
-
 const process = require('process')
 const webpack = require('webpack')
 const path = require('path')
@@ -7,23 +5,29 @@ const path = require('path')
 const Dbust = require('webpack-dbust')
 const CompressionPlugin = require('compression-webpack-plugin')
 
-const debug   = process.env.NODE_ENV !== 'production'
+module.exports = () => {
 
-function config(debug){
-  // const name = 'main'
-  // const filename = `${name}${debug ? '' : '-[chunkhash]'}.js`
-  const plugins = []// [ new webpack.optimize.CommonsChunkPlugin({ name, filename }), ]
+  const debug = process.env.NODE_ENV === 'development'
+
+  const plugins = []
 
   if(!debug) plugins.push(...[
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-    new Dbust(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new Dbust({
+      base: __dirname,
+      autosave: process.env.WEBPACK_SOURCE !== 'gulp',
+    }),
     new CompressionPlugin(),
   ])
 
   return {
-    devtool: debug ? 'sourcemap' : false,
+    mode: process.env.NODE_ENV,
+    devtool: debug ? 'source-map' : false,
+    optimization: { minimize: !debug },
+    plugins,
     entry: {
       'main': [
         'babel-polyfill',
@@ -35,25 +39,29 @@ function config(debug){
       filename: debug ? '[name].js' : '[name]-[chunkhash].js'
     },
     module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
+      rules: [{
+        test: /\.jsx?$/,
+        exclude: [
+          path.resolve(__dirname, 'node_modules'),
+        ],
+        use: {
           loader: 'babel-loader',
-          query: {
-            plugins: ['transform-regenerator'],
-            presets: ['es2015', 'stage-0'],
-          }
-        }
-      ],
+          options: {
+            plugins: [
+              'babel-plugin-lodash',
+              'babel-plugin-transform-class-properties',
+            ].map(require.resolve),
+            presets: [
+              [ '@babel/preset-env', {
+                targets: {
+                  browsers: [ 'last 4 versions' ],
+                },
+              }],
+            ],
+          },
+        },
+      }],
     },
-    plugins,
   }
 }
 
-// So I can run from terminal and from gulp
-if(/webpack\.js$/.test(require.main.filename)){
-  module.exports = config(debug)
-}else{
-  module.exports = config
-}

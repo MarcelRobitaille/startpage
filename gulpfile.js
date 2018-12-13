@@ -1,39 +1,36 @@
-'use strict'
-
-const fs = require('pn/fs')
 const del = require('del')
-const gulp = require('gulp-autoplumb')
-const runSequence = require('run-sequence')
-const process = require('process')
+const gulp = require('gulp')
+const glob = require('glob')
 const dbust = require('dbust')
+const process = require('process')
 
 dbust.options({ base: __dirname })
 
-fs.readdirSync('./tasks/')
-  .filter(file => /\.js$/.test(file))
-  .forEach(file => {
-    require('./tasks/' + file)(gulp)
-  })
+gulp.task('set-env', done => {
+  process.env.NODE_ENV = 'production'
+  done()
+})
 
+glob.sync('./tasks/*.js').map(require)
 
-gulp.task('default', ['css', 'js', 'svg', 'watch', 'pug', 'browser-sync'])
+gulp.task('watch', gulp.parallel(
+  'watch-css',
+  'watch-svg',
+))
+
+gulp.task('default', gulp.series(
+  gulp.parallel('css', 'js', 'svg', 'watch', 'browser-sync'),
+  'pug',
+))
 
 gulp.task('set-env', () => process.env.NODE_ENV = 'production')
 gulp.task('clean', () => del('./build/'))
 gulp.task('dbust', dbust.save)
 
-gulp.task('build', done => {
-  runSequence(
-    ['set-env', 'clean'],
-    Object.keys(gulp.tasks).filter( task => /build-.*/gi.test(task) ),
-    'dbust',
-    'pug',
-    done
-  )
-})
+gulp.task('build', gulp.series(
+  'clean',
+  gulp.parallel('build-css', 'build-js', 'build-svg'),
+  'dbust',
+  'build-pug',
+))
 
-gulp.task('watch', Object.keys(gulp.tasks).filter(task => {
-  return /watch-.*/gi.test(task)
-}), () => {
-  gulp.watch(['./manifest.json', './source/pug/*', './source/svg/*'], ['pug'])
-})

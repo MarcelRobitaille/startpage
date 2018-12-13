@@ -1,9 +1,8 @@
-'use strict'
-
-const $ = require('gulp-load-plugins')()
-const process = require('process')
-const path = require('path')
 const fs = require('fs')
+const path = require('path')
+
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')()
 
 const locals = {
   asset: (file) => {
@@ -23,10 +22,13 @@ const locals = {
   },
 }
 
-module.exports = gulp => {
-  gulp.task('pug', () => {
-    return gulp.src('./source/pug/index.pug')
-      .pipe($.pug({ locals }))
-      .pipe(gulp.dest(process.env.NODE_ENV === 'development' ? 'public' : 'build'))
-  })
-}
+const stream = dest => () =>
+  gulp.src('./source/pug/index.pug')
+    .pipe($.pug({ locals }))
+    .pipe(gulp.dest(dest))
+
+
+gulp.task('pug', stream('public'))
+
+gulp.task('build-pug', gulp.series('set-env', stream('build')))
+
