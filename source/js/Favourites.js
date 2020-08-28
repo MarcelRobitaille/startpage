@@ -29,6 +29,7 @@ const results = [
     { text: 'Files', url: 'https://fichiers4.umoncton.ca/htcomnet/' },
     { text: 'ManiWeb', url: 'https://socrate.umoncton.ca/accesprotege.htm' },
     { text: 'OneNote', url: 'https://www.onenote.com/notebooks' },
+    { text: 'Teams', url: 'https://teams.microsoft.com' },
   ].map(u => new Favourite(u)),
 
 	...[
