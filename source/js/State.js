@@ -1,4 +1,5 @@
 export default class State {
+
   setResults(results) {
     this.results = results
 

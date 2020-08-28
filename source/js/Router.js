@@ -3,6 +3,7 @@ import URL from './URL.js'
 import DDG from './DDG.js'
 
 export default class Router {
+
   constructor(input) {
     this.input = input.trim()
   }
