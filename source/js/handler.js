@@ -24,6 +24,26 @@ const render = () => {
 
 
 /*
+ * updateSearchRestuls
+ * Replace search results with results for current query
+ */
+
+const updateSearchResults = () => {
+
+  // Get router instance
+  const router = new Router($search.value)
+
+  // Save results to state
+  state.setResults(router.results())
+
+  render()
+}
+
+// Call once on load in case user types whole query before js loads
+updateSearchResults()
+
+
+/*
 *
 * Handle typing in field
 *
@@ -33,13 +53,7 @@ $search.addEventListener('keyup', event => {
 
   if ([ 'ArrowDown', 'ArrowUp', 'Control', 'Enter' ].indexOf(event.key) !== -1) return
 
-  // Get router instance
-  const router = new Router($search.value)
-
-  // Save results to state
-  state.setResults(router.results())
-
-  render()
+  updateSearchResults()
 })
 
 
