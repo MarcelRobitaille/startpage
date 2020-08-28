@@ -31,6 +31,11 @@ const results = [
     { text: 'OneNote', url: 'https://www.onenote.com/notebooks' },
   ].map(u => new Favourite(u)),
 
+	...[
+		{ text: 'Waterloo Quest', url: 'https://adfs.uwaterloo.ca/adfs/ls/idpinitiatedsignon.aspx?LoginToRP=urn:quest.ss.apps.uwaterloo.ca' },
+		{ text: 'LEARN', url: 'https://learn.uwaterloo.ca/d2l/home' },
+	].map(u => new Favourite(u)),
+
 
   /**
    * Reddit
