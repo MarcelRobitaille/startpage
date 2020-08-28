@@ -91,6 +91,7 @@ const results = [
   ...[
     { text: 'Facebook', url: 'https://facebook.com' },
     { text: 'Messenger', url: 'https://messenger.com' },
+    { text: 'WhatsApp', url: 'https://web.whatsapp.com' },
   ].map(f => new Favourite(f)),
 
 
