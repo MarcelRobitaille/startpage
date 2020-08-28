@@ -80,6 +80,7 @@ const results = [
     { text: 'Synonymes', url: 'http://www.synonymes.com/' },
     { text: 'Word Reference', url: 'http://wordreference.com/enfr/' },
     { text: 'Google Translate', url: 'https://translate.google.com' },
+    { text: 'Bon Patron', url: 'https://bonpatron.com/fr/' },
   ].map(f => new Favourite(f)),
 
 
