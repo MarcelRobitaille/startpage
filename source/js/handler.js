@@ -17,9 +17,12 @@ let state = new State()
 */
 
 const render = () => {
-  $dropdown.innerHTML = state.results
-    .map(result => `<li class='dropdown__li ${result.url === state.focused ? 'focus' : ''}'>${result.render()}</li>`)
-    .join('')
+	$dropdown.innerHTML = state.results
+		.map(result => `
+			<li class='dropdown__li ${result.url === state.focused ? 'focus' : ''}'>
+				${result.render()}
+			</li>`)
+		.join('')
 }
 
 
@@ -30,13 +33,13 @@ const render = () => {
 
 const updateSearchResults = () => {
 
-  // Get router instance
-  const router = new Router($search.value)
+	// Get router instance
+	const router = new Router($search.value)
 
-  // Save results to state
-  state.setResults(router.results())
+	// Save results to state
+	state.setResults(router.results())
 
-  render()
+	render()
 }
 
 // Call once on load in case user types whole query before js loads
@@ -51,9 +54,10 @@ updateSearchResults()
 
 $search.addEventListener('keyup', event => {
 
-  if ([ 'ArrowDown', 'ArrowUp', 'Control', 'Enter' ].indexOf(event.key) !== -1) return
+	if ([ 'ArrowDown', 'ArrowUp', 'Control', 'Enter' ]
+		.indexOf(event.key) !== -1) return
 
-  updateSearchResults()
+	updateSearchResults()
 })
 
 
@@ -64,32 +68,29 @@ $search.addEventListener('keyup', event => {
 */
 
 $search.addEventListener('keydown', (event) => {
-  console.log(event)
-  const directions = event.ctrlKey
-    ? { n: 1, p: -1 }
-    : { ArrowUp: -1, ArrowDown: 1 }
+	const directions = event.ctrlKey
+		? { n: 1, p: -1 }
+		: { ArrowUp: -1, ArrowDown: 1 }
 
-  const direction = directions[event.key]
+	const direction = directions[event.key]
 
-  // If key not an arrow key
-  if (!direction) return
+	// If key not an arrow key
+	if (!direction) return
 
-  // Prevents going to the beginning/end of line
-  event.preventDefault()
+	// Prevents going to the beginning/end of line
+	event.preventDefault()
 
-  // Update focused
-  state.moveFocus(direction)
+	// Update focused
+	state.moveFocus(direction)
 
-  render()
+	render()
 })
 
 
 $search.addEventListener('keydown', (event) => {
-  if(event.key !== 'Enter') return
+	if(event.key !== 'Enter') return
 
-  if(state.focused){
-    window.location.href = state.focused
-  }
-
+	if(state.focused){
+		window.location.href = state.focused
+	}
 })
-

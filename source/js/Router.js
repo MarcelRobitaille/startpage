@@ -4,41 +4,40 @@ import DDG from './DDG.js'
 
 export default class Router {
 
-  constructor(input) {
-    this.input = input.trim()
-  }
+	constructor(input) {
+		this.input = input.trim()
+	}
 
-  results() {
-    const results = []
+	results() {
+		const results = []
 
-    if (this.input === '') return results
-
-
-    if (!this.input.includes(' ')) {
-      const favourites = new Favourites(this.input)
-      results.push(...favourites.results())
-    }
+		if (this.input === '') return results
 
 
-    /*
-    *
-    * URL
-    *
-    */
-
-    const url = new URL(this.input)
-    if (url.isValid()) results.push(url)
+		if (!this.input.includes(' ')) {
+			const favourites = new Favourites(this.input)
+			results.push(...favourites.results())
+		}
 
 
-    /*
-    *
-    * Duck duck go
-    *
-    */
+		/*
+		*
+		* URL
+		*
+		*/
 
-    results.push(new DDG(this.input))
+		const url = new URL(this.input)
+		if (url.isValid()) results.push(url)
 
-    return results
-  }
+
+		/*
+		*
+		* Duck duck go
+		*
+		*/
+
+		results.push(new DDG(this.input))
+
+		return results
+	}
 }
-
