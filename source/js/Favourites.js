@@ -127,6 +127,6 @@ export default class Favourites {
 	}
 
 	results() {
-		return fuse.search(this.input)
+		return fuse.search(this.input).map(result => result.item)
 	}
 }
