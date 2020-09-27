@@ -42,6 +42,18 @@ const results = [
 
 
 	/**
+	 * Music download sites
+	 */
+
+	...[
+		{ text: 'Beatport', url: 'https://www.beatport.com/' },
+		{ text: '7digital', url: 'https://us.7digital.com/' },
+		{ text: 'Juno', url: 'https://www.junodownload.com/' },
+		{ text: 'TraxSource', url: 'https://www.traxsource.com/' },
+	].map(u => new Favourite(u)),
+
+
+	/**
 	 * Reddit
 	 */
 
