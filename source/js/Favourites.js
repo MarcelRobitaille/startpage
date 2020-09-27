@@ -38,6 +38,8 @@ const results = [
 			'LoginToRP=urn:quest.ss.apps.uwaterloo.ca',
 		].join('') },
 		{ text: 'LEARN', url: 'https://learn.uwaterloo.ca/' },
+		{ text: 'Piazza', url: 'https://piazza.com' },
+		{ text: 'Crowdmark', url: 'https://app.crowdmark.com/student/courses' },
 	].map(u => new Favourite(u)),
 
 
