@@ -40,6 +40,10 @@ const results = [
 		{ text: 'LEARN', url: 'https://learn.uwaterloo.ca/' },
 		{ text: 'Piazza', url: 'https://piazza.com' },
 		{ text: 'Crowdmark', url: 'https://app.crowdmark.com/student/courses' },
+
+		// QuIN
+		{ text: 'QuIN Wiki',
+			url: 'https://research.iqc.uwaterloo.ca/quinkim/quin-wiki/' },
 	].map(u => new Favourite(u)),
 
 
