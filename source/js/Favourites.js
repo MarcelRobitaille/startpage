@@ -37,7 +37,7 @@ const results = [
 			'https://adfs.uwaterloo.ca/adfs/ls/idpinitiatedsignon.aspx?',
 			'LoginToRP=urn:quest.ss.apps.uwaterloo.ca',
 		].join('') },
-		{ text: 'LEARN', url: 'https://learn.uwaterloo.ca/' },
+		{ text: 'LEARN', url: 'https://learn.uwaterloo.ca/d2l/lms/legacy/selfregistration.d2l?ou=6606' },
 		{ text: 'Piazza', url: 'https://piazza.com' },
 		{ text: 'Crowdmark', url: 'https://app.crowdmark.com/student/courses' },
 
