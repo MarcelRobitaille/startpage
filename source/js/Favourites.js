@@ -138,6 +138,15 @@ const results = [
 	...[
 		{ text: 'Netflix', url: 'https://netflix.com' },
 	].map(f => new Favourite(f)),
+
+
+	/**
+	 * Games
+	 */
+
+	...[
+		{ text: 'Connect 4', url: 'https://c4arena.com' },
+	].map(f => new Favourite(f)),
 ]
 
 const fuse = new Fuse(results, {
