@@ -11,7 +11,8 @@
     "test": "./node_modules/.bin/mocha tests/*/*.test.js",
     "gulp": "gulp",
     "webpack": "webpack",
-    "ncu": "ncu"
+    "ncu": "ncu",
+    "build": "gulp build"
   },
   "dependencies": {
     "babel-plugin-transform-class-properties": "6.24.1",
