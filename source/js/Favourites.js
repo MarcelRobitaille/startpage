@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 import Fuse from 'fuse.js'
 
 import Reddit from './Reddit.js'
