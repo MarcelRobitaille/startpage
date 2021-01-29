@@ -42,6 +42,17 @@ const results = [
 		{ text: 'LEARN', url: 'https://learn.uwaterloo.ca/d2l/lms/legacy/selfregistration.d2l?ou=6606' },
 		{ text: 'Piazza', url: 'https://piazza.com' },
 		{ text: 'Crowdmark', url: 'https://app.crowdmark.com/student/courses' },
+		{ text: 'Library', url: 'https://login.proxy.lib.uwaterloo.ca/login' },
+		{ text: 'Machine Shop Stores',
+			url: 'https://ems-stores.uwaterloo.ca/ems-site/' },
+		{ text: 'Moku Python Docs',
+			url: 'https://pymoku.readthedocs.io/en/2.8.3/moku.html' },
+		{ text: 'Waterloo Degree Requirements',
+			url: 'https://uwaterloo.ca/graduate-studies-academic-calendar/engineering/department-electrical-and-computer-engineering/master-applied-science-masc-electrical-and-computer-engineering' },
+		{ text: 'Waterloo Graduate Course List',
+			url: 'https://classes.uwaterloo.ca/grad.html' },
+		{ text: 'Waterloo Important Dates',
+			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/important-dates/list' },
 
 		// QuIN
 		{ text: 'QuIN Wiki',
