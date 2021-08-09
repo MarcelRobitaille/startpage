@@ -17,6 +17,7 @@ const results = [
 		{ text: 'Octoprint', url: 'https://octoprint.robitaille.host' },
 		{ text: 'Nextcloud', url: 'https://nextcloud.robitaille.host' },
 		{ text: 'Gitlab', url: 'https://gitlab.robitaille.host' },
+		{ text: 'Syncthing', url: 'http://localhost:8384' },
 	].map(l => new Favourite(l)),
 
 
