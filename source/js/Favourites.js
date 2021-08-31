@@ -153,12 +153,11 @@ const results = [
 ]
 
 const fuse = new Fuse(results, {
-	location: 0,
 	threshold: 0.1,
 	shouldSort: true,
-	maxPatternLength: 32,
 	includeMatches: true,
 	minMatchCharLength: 1,
+	ignoreLocation: true,
 	keys: [
 		'text',
 	]
