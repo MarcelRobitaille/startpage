@@ -34,7 +34,7 @@ const results = [
 		{ text: 'OneNote', url: 'https://www.onenote.com/notebooks' },
 		{ text: 'Teams', url: 'https://teams.microsoft.com' },
 		{ text: 'Graduate Studies Academic Calendar',
-			url: 'https://uwaterloo.ca/graduate-studies-academic-calendar/' },
+			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/important-dates/calendar' },
 	].map(u => new Favourite(u)),
 
 	...[
