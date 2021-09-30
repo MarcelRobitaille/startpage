@@ -56,6 +56,8 @@ const results = [
 			url: 'https://classes.uwaterloo.ca/grad.html' },
 		{ text: 'Waterloo Important Dates',
 			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/important-dates/list' },
+		{ text: 'Waterloo OneDrive',
+			url: 'https://uofwaterloo-my.sharepoint.com/' },
 
 		// QuIN
 		{ text: 'QuIN Wiki',
