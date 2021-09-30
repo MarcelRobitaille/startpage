@@ -58,6 +58,8 @@ const results = [
 			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/important-dates/list' },
 		{ text: 'Waterloo OneDrive',
 			url: 'https://uofwaterloo-my.sharepoint.com/' },
+		{ text: 'Opentrons Docs',
+			url: 'https://docs.opentrons.com/v2/search.html?q=air_gap' },
 
 		// QuIN
 		{ text: 'QuIN Wiki',
