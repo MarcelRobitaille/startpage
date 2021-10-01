@@ -59,7 +59,7 @@ const results = [
 		{ text: 'Waterloo OneDrive',
 			url: 'https://uofwaterloo-my.sharepoint.com/' },
 		{ text: 'Opentrons Docs',
-			url: 'https://docs.opentrons.com/v2/search.html?q=air_gap' },
+			url: 'https://docs.opentrons.com/v2/' },
 
 		// QuIN
 		{ text: 'QuIN Wiki',
