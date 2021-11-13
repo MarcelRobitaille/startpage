@@ -18,6 +18,7 @@ const results = [
 		{ text: 'Nextcloud', url: 'https://nextcloud.robitaille.host' },
 		{ text: 'Gitlab', url: 'https://gitlab.robitaille.host' },
 		{ text: 'Syncthing', url: 'http://localhost:8384' },
+		{ text: 'pfSense', url: 'https://pfsense.robitaille.host' },
 	].map(l => new Favourite(l)),
 
 
