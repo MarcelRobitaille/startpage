@@ -32,7 +32,7 @@ const results = [
 		{ text: 'Coop', url: 'https://coop.umoncton.ca/login/student.htm' },
 		{ text: 'Files', url: 'https://fichiers4.umoncton.ca/htcomnet/' },
 		{ text: 'ManiWeb', url: 'https://socrate.umoncton.ca/accesprotege.htm' },
-		{ text: 'OneNote', url: 'https://www.onenote.com/notebooks' },
+		// { text: 'OneNote', url: 'https://www.onenote.com/notebooks' },
 		{ text: 'Teams', url: 'https://teams.microsoft.com' },
 		{ text: 'Graduate Studies Academic Calendar',
 			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/important-dates/calendar' },
