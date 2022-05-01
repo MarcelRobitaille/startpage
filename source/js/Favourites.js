@@ -19,6 +19,7 @@ const results = [
 		{ text: 'Gitlab', url: 'https://gitlab.robitaille.host' },
 		{ text: 'Syncthing', url: 'http://localhost:8384' },
 		{ text: 'pfSense', url: 'https://pfsense.robitaille.host' },
+		{ text: 'Personal Wiki', url: 'https://wiki.robitaille.host' },
 	].map(l => new Favourite(l)),
 
 
