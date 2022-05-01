@@ -61,7 +61,7 @@
     "gulp-util": "3.0.8",
     "imagemin-jpegoptim": "7.0.0",
     "jsdom": "16.4.0",
-    "moment": "2.27.0",
+    "moment": "2.29.2",
     "morgan": "1.10.0",
     "normalize.css": "8.0.1",
     "npm-check-updates": "8.1.0",
