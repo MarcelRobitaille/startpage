@@ -37,6 +37,7 @@ const results = [
 		{ text: 'Teams', url: 'https://teams.microsoft.com' },
 		{ text: 'Graduate Studies Academic Calendar',
 			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/important-dates/calendar' },
+		{ text: 'Concur', url: 'https://adfs.uwaterloo.ca/adfs/ls/idpinitiatedsignon.aspx?loginToRp=Concur' }
 	].map(u => new Favourite(u)),
 
 	...[
