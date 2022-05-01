@@ -63,6 +63,15 @@ const results = [
 			url: 'https://uofwaterloo-my.sharepoint.com/' },
 		{ text: 'Opentrons Docs',
 			url: 'https://docs.opentrons.com/v2/' },
+		{ text: 'Waterloo Thesis Timeline',
+			url: 'https://uwaterloo.ca/engineering/graduate-students/current-students/degree-completion-deadlines' },
+		// https://download.franka.de/ride-cli-doc/statemachine_tutorial.html#moving-the-robot
+		{ text: 'Waterloo Thesis Formatting',
+			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/current-students/thesis/thesis-formatting' },
+		{ text: 'Waterloo Thesis Info',
+			url: 'https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/current-students/thesis' },
+		{ text: 'Waterloo Degree Completion',
+			url: 'https://uwaterloo.ca/engineering/graduate-students/current-students/steps-graduate/masc-and-march-degree-completion' },
 
 		// QuIN
 		{ text: 'QuIN Wiki',
