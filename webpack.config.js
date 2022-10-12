@@ -12,7 +12,6 @@ module.exports = () => {
 	const plugins = []
 
 	if(!debug) plugins.push(...[
-		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('production'),
 		}),
