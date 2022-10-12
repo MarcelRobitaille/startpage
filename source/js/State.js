@@ -1,3 +1,5 @@
+const clamp = (x, min, max) => Math.min(Math.max(x, min), max)
+
 export default class State {
 
 	setResults(results) {
@@ -9,9 +11,11 @@ export default class State {
 	}
 
 	moveFocus(direction) {
-		const i = Math.min(Math.max(
+		const i = clamp(
 			this.results.map(result => result.url).indexOf(this.focused) + direction,
-			0), this.results.length - 1)
+			0,
+			this.results.length - 1
+		)
 		this.focused = this.results[i].url
 	}
 }
