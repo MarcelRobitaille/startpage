@@ -15,9 +15,13 @@
       padding: 15px;
       border: none;
       font-size: 20px;
-      border-bottom: 2px solid rgba($cream, .5);
+      border-bottom: 2px solid $darkCream;
       color: $cream;
       background: transparent;
+      &:focus {
+        outline: 2px solid $darkCream;
+        outline-offset: -2px;
+      }
     }
     .dropdown{
       left: 0;
