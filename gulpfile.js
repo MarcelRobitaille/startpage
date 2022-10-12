@@ -1,4 +1,4 @@
-const del = require('del')
+const rimraf = require('rimraf')
 const gulp = require('gulp')
 const glob = require('glob')
 const dbust = require('dbust')
@@ -24,7 +24,7 @@ gulp.task('default', gulp.series(
 ))
 
 gulp.task('set-env', () => process.env.NODE_ENV = 'production')
-gulp.task('clean', () => del('./build/'))
+gulp.task('clean', cb => rimraf('./build/', cb))
 gulp.task('dbust', dbust.save)
 
 gulp.task('build', gulp.series(
