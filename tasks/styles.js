@@ -2,6 +2,7 @@ const path = require('path')
 
 const gulp = require('gulp')
 const $ = require('gulp-load-plugins')()
+const sass = require('gulp-sass')(require('sass'))
 const sassGraph = require('sass-graph')
 
 const prepend = substring => string => substring + string
@@ -29,7 +30,7 @@ styles.map(style => {
 	gulp.task(task, () => {
 		return gulp.src(file)
 			.pipe($.sourcemaps.init())
-			.pipe($.sass())
+			.pipe(sass())
 			.pipe($.autoprefixer())
 			.pipe($.sourcemaps.write('maps/'))
 			.pipe(gulp.dest('public/css'))
@@ -41,7 +42,7 @@ styles.map(style => {
 
 	gulp.task(`build-css-${style}`, () => {
 		return gulp.src(file)
-			.pipe($.sass())
+			.pipe(sass())
 			.pipe($.cssnano())
 			.pipe($.autoprefixer())
 			.pipe($.rev())
