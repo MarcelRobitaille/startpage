@@ -1,8 +1,8 @@
 'use strict'
 
-const newer		 = require('gulp-newer')
-const imagemin	= require('gulp-imagemin')
-const jpegoptim = require('imagemin-jpegoptim')
+const newer	= require('gulp-newer')
+const imagemin = import('gulp-imagemin')
+const jpegoptim = import('imagemin-jpegoptim')
 
 module.exports = gulp => {
 	gulp.task('images', () => {
