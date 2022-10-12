@@ -169,7 +169,7 @@ const results = [
 ]
 
 const fuse = new Fuse(results, {
-	threshold: 0.1,
+	threshold: 0.2,
 	shouldSort: true,
 	includeMatches: true,
 	minMatchCharLength: 1,
