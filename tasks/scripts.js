@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const chalk = require('chalk')
 const moment = require('moment')
-const gutil = require('gulp-util')
+const log = require('fancy-log')
 const webpack = require('webpack')
 const browserSync = require('browser-sync').get('startpage')
 
@@ -31,7 +31,7 @@ const handler = (err, stats, options) => {
 			.duration(stats.endTime - stats.startTime)
 			.asSeconds()
 			.toFixed(2)
-		gutil.log(
+		log(
 			`Finished '${chalk.cyan('webpack')}' after ${chalk.magenta(`${time} s`)}`
 		)
 	}
