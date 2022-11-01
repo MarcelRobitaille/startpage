@@ -252,6 +252,8 @@ const topLevelDomains = [
 	'za',
 	'zm',
 	'zw',
+	'local',
+	'com',
 ].join('|')
 
 // I know there's more but I don't really give a fuck
