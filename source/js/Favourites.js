@@ -51,8 +51,6 @@ const results = [
 		{ text: 'Library', url: 'https://login.proxy.lib.uwaterloo.ca/login' },
 		{ text: 'Machine Shop Stores',
 			url: 'https://ems-stores.uwaterloo.ca/ems-site/' },
-		{ text: 'Moku Python Docs',
-			url: 'https://pymoku.readthedocs.io/en/2.8.3/moku.html' },
 		{ text: 'Waterloo Degree Requirements',
 			url: 'https://uwaterloo.ca/graduate-studies-academic-calendar/engineering/department-electrical-and-computer-engineering/master-applied-science-masc-electrical-and-computer-engineering' },
 		{ text: 'Waterloo Graduate Course List',
