@@ -170,6 +170,13 @@ const results = [
 	...[
 		{ text: 'Connect 4', url: 'https://c4arena.com' },
 	].map(f => new Favourite(f)),
+
+	/**
+	 * Banking
+	 */
+	...[
+		{ text: 'RBC Royal Bank of Canada', url: 'https://www1.royalbank.com/cgi-bin/rbaccess/rbcgi3m01' },
+	].map(f => new Favourite(f)),
 ]
 
 const fuse = new Fuse(results, {
