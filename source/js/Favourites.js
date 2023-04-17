@@ -138,6 +138,8 @@ const results = [
 		{ text: 'Word Reference', url: 'http://wordreference.com/enfr/' },
 		{ text: 'Google Translate', url: 'https://translate.google.com' },
 		{ text: 'Bon Patron', url: 'https://bonpatron.com/fr/' },
+		{ text: 'Thesaurus', url: 'https://www.thesaurus.com/' },
+		{ text: 'Deepl', url: 'https://deepl.com/' },
 	].map(f => new Favourite(f)),
 
 
