@@ -122,6 +122,8 @@ const results = [
 	...[
 		{ text: 'Desmos Graphing Calculator',
 			url: 'https://www.desmos.com/calculator' },
+		{ text: 'LCSC', url: 'https://www.lcsc.com/' },
+		{ text: 'JLCPCB Parts', url: 'https://jlcpcb.com/parts' },
 	].map(l => new Favourite(l)),
 
 
