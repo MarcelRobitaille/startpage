@@ -124,6 +124,7 @@ const results = [
 			url: 'https://www.desmos.com/calculator' },
 		{ text: 'LCSC', url: 'https://www.lcsc.com/' },
 		{ text: 'JLCPCB Parts', url: 'https://jlcpcb.com/parts' },
+		{ text: 'Onshape', url: 'https://cad.onshape.com/documents' },
 	].map(l => new Favourite(l)),
 
 
