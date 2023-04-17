@@ -20,6 +20,7 @@ const results = [
 		{ text: 'Syncthing', url: 'http://localhost:8384' },
 		{ text: 'pfSense', url: 'https://pfsense.robitaille.host' },
 		{ text: 'Personal Wiki', url: 'https://wiki.robitaille.host' },
+		{ text: 'Pi-hole', url: 'http://pihole.local/admin' },
 	].map(l => new Favourite(l)),
 
 
