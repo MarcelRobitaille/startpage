@@ -21,6 +21,7 @@ const results = [
 		{ text: 'pfSense', url: 'https://pfsense.robitaille.host' },
 		{ text: 'Personal Wiki', url: 'https://wiki.robitaille.host' },
 		{ text: 'Pi-hole', url: 'http://pihole.local/admin' },
+		{ text: 'Gitea', url: 'http://gitea.robitaille.host' },
 	].map(l => new Favourite(l)),
 
 
