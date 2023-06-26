@@ -22,6 +22,7 @@ const results = [
 		{ text: 'Personal Wiki', url: 'https://wiki.robitaille.host' },
 		{ text: 'Pi-hole', url: 'http://pihole.local/admin' },
 		{ text: 'Gitea', url: 'http://gitea.robitaille.host' },
+		{ text: 'Tailscale', url: 'https://login.tailscale.com/admin/machines' },
 	].map(l => new Favourite(l)),
 
 
